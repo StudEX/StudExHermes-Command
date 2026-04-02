@@ -79,7 +79,7 @@ function Gate({ onAuth }: { onAuth: () => void }) {
         <div className="relative w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden" style={{ boxShadow: '0 0 40px rgba(255,69,0,0.4)' }}>
           <Image src="/hero-robot.jpeg" alt="NALEDI" fill className="object-cover" />
         </div>
-        <h1 className="text-3xl font-bold text-ember mb-2" style={{ textShadow: '0 0 20px rgba(255,69,0,0.5)' }}>NALEDI NEXUS</h1>
+        <h1 className="text-3xl font-bold mb-2" style={{ color: '#FF2D95', textShadow: '0 0 20px rgba(255,45,149,0.8), 0 0 40px rgba(255,45,149,0.4)' }}>STUD#X D#V0P$ 2077</h1>
         <p className="text-gray-500 mb-8 text-sm">COMMAND CENTRE ACCESS</p>
         <input
           type="password" value={pw} onChange={e => { setPw(e.target.value); setErr(false) }}
@@ -152,28 +152,34 @@ export default function CommandCentre() {
   const approvalCount = cards.filter(c => c.column === 'APPROVAL').length
 
   return (
-    <div className="min-h-screen bg-obsidian text-gray-200 font-mono overflow-x-hidden">
+    <div className="min-h-screen text-gray-200 font-mono overflow-x-hidden relative">
+      {/* ── FIXED CYBERPUNK BACKGROUND ─────────────────────────────── */}
+      <div className="fixed inset-0 -z-10">
+        <Image src="/bg-cyberpunk.webp" alt="" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-black/75" />
+      </div>
+
       {/* ── HERO HEADER ──────────────────────────────────────────────── */}
-      <div className="relative h-40 overflow-hidden">
-        <Image src="/hero-robot.jpeg" alt="" fill className="object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-obsidian" />
-        <div className="absolute inset-0 flex items-center justify-between px-6">
+      <div className="relative h-56 overflow-hidden">
+        <Image src="/hero-header.jpeg" alt="" fill className="object-cover object-top" priority style={{ objectPosition: 'center 20%' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90" />
+        <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-ember" style={{ textShadow: '0 0 20px rgba(255,69,0,0.6)' }}>
-              NALEDI NEXUS
+            <h1 className="text-4xl font-bold" style={{ color: '#FF2D95', textShadow: '0 0 20px rgba(255,45,149,0.8), 0 0 40px rgba(255,45,149,0.5), 0 0 80px rgba(255,45,149,0.3)' }}>
+              STUD#X D#V0P$ 2077
             </h1>
-            <p className="text-gray-400 text-xs mt-1">COMMAND CENTRE v1.0 &mdash; STUDEX GLOBAL MARKETS</p>
+            <p className="text-gray-300 text-xs mt-1 tracking-widest">COMMAND CENTRE v1.0 &mdash; STUDEX GLOBAL MARKETS</p>
           </div>
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-gray-500">NO-HANDS</span>
-              <button onClick={() => setNoHands(!noHands)} className={`w-12 h-6 rounded-full transition-all ${noHands ? 'bg-ember' : 'bg-gray-700'} relative`}>
+              <span className="text-gray-400 text-xs">NO-HANDS</span>
+              <button onClick={() => setNoHands(!noHands)} className={`w-12 h-6 rounded-full transition-all ${noHands ? 'bg-ember glow-ember' : 'bg-gray-700'} relative`}>
                 <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-all ${noHands ? 'left-6' : 'left-0.5'}`} />
               </button>
             </div>
             <div className="text-right">
-              <div className="text-ember text-lg font-bold">{clock}</div>
-              <div className="text-gray-500 text-xs">SAST</div>
+              <div className="text-ember text-xl font-bold" style={{ textShadow: '0 0 15px rgba(255,69,0,0.5)' }}>{clock}</div>
+              <div className="text-gray-400 text-xs tracking-widest">SAST</div>
             </div>
           </div>
         </div>
@@ -188,7 +194,7 @@ export default function CommandCentre() {
             { label: 'AWAITING APPROVAL', value: approvalCount, color: 'text-signal' },
             { label: 'TOKEN BURN TODAY', value: 'R0.00', color: 'text-green-400' },
           ].map(m => (
-            <div key={m.label} className="bg-obsidian-100 border border-gray-800 rounded p-3">
+            <div key={m.label} className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-3">
               <div className="text-gray-500 text-xs">{m.label}</div>
               <div className={`text-xl font-bold ${m.color}`}>{m.value}</div>
             </div>
@@ -203,7 +209,7 @@ export default function CommandCentre() {
             { platform: 'WHATSAPP', reach: '847 msgs', engage: '94% read', icon: '💬' },
             { platform: 'GOOGLE ADS', reach: 'R1,240', engage: '3.8x ROAS', icon: '📢' },
           ].map(s => (
-            <div key={s.platform} className="bg-obsidian-100 border border-gray-800 rounded p-3">
+            <div key={s.platform} className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-3">
               <div className="flex items-center gap-2 text-xs text-gray-500 mb-1">
                 <span>{s.icon}</span>{s.platform}
               </div>
@@ -218,7 +224,7 @@ export default function CommandCentre() {
           <h2 className="text-xs text-gray-500 mb-2 tracking-widest">AGENT SWARM &mdash; {busyAgents} ACTIVE</h2>
           <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-9 gap-2">
             {AGENTS.map(a => (
-              <div key={a.id} className="bg-obsidian-100 border border-gray-800 rounded p-2 hover:border-ember/30 transition-colors">
+              <div key={a.id} className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-2 hover:border-ember/30 transition-colors">
                 <div className="flex items-center gap-1.5 mb-1">
                   <div className={`w-2 h-2 rounded-full ${statusDot[a.status]}`} />
                   <span className="text-xs font-bold truncate">{a.icon} {a.name.replace('Agent','')}</span>
@@ -246,7 +252,7 @@ export default function CommandCentre() {
                 key={col}
                 onDragOver={e => e.preventDefault()}
                 onDrop={() => onDrop(col)}
-                className="bg-obsidian-100 border border-gray-800 rounded p-2"
+                className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-2"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-bold text-gray-400">{col}</span>
@@ -258,7 +264,7 @@ export default function CommandCentre() {
                       key={card.id}
                       draggable
                       onDragStart={() => onDragStart(card.id)}
-                      className="bg-obsidian border border-gray-700 rounded p-2 cursor-grab active:cursor-grabbing hover:border-ember/40 transition-colors"
+                      className="bg-black/70 border border-gray-700/50 rounded p-2 cursor-grab active:cursor-grabbing hover:border-ember/40 transition-colors"
                     >
                       <div className="flex items-center gap-1.5 mb-1">
                         <div className={`w-1.5 h-1.5 rounded-full ${priorityColor[card.priority]}`} />
@@ -286,7 +292,7 @@ export default function CommandCentre() {
         </div>
 
         {/* ── MODEL STATUS ─────────────────────────────────────────── */}
-        <div className="bg-obsidian-100 border border-gray-800 rounded p-3 flex flex-wrap items-center gap-4 text-xs">
+        <div className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-3 flex flex-wrap items-center gap-4 text-xs">
           <div><span className="text-gray-500">MODEL:</span> <span className="text-terminal font-bold">qwen2.5:1.5b</span></div>
           <div><span className="text-gray-500">SPEED:</span> <span className="text-white">~35 t/s</span></div>
           <div><span className="text-gray-500">CONTEXT:</span> <span className="text-white">4096 / 32768</span></div>
@@ -298,7 +304,7 @@ export default function CommandCentre() {
         {/* ── MEMORY LOG ───────────────────────────────────────────── */}
         <div>
           <h2 className="text-xs text-gray-500 mb-2 tracking-widest">MEMORY LOG</h2>
-          <div className="bg-obsidian-100 border border-gray-800 rounded overflow-hidden">
+          <div className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded overflow-hidden">
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-gray-800 text-gray-500">
@@ -332,7 +338,7 @@ export default function CommandCentre() {
 
         {/* ── TREND FEED + RALF LOOP ──────────────────────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="bg-obsidian-100 border border-gray-800 rounded p-3">
+          <div className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-3">
             <h3 className="text-xs text-gray-500 mb-2 tracking-widest">TREND FEED</h3>
             <div className="space-y-1.5 text-xs">
               {[
@@ -348,7 +354,7 @@ export default function CommandCentre() {
               ))}
             </div>
           </div>
-          <div className="bg-obsidian-100 border border-gray-800 rounded p-3">
+          <div className="bg-black/60 backdrop-blur-sm border border-gray-800/60 rounded p-3">
             <h3 className="text-xs text-gray-500 mb-2 tracking-widest">RALF LOOP STATUS</h3>
             <div className="space-y-1.5 text-xs">
               {[
