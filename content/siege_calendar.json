@@ -1,0 +1,204 @@
+{
+  "campaign": "Studex Global Markets 7-Day Content Siege",
+  "start_date": "2026-05-14",
+  "total_posts": 42,
+  "target_audience": "HNW Traders, Commodity Buyers, Government Procurement, Elite Athletes",
+  "primary_cta": "Apply for Private Account access",
+  "days": [
+    {
+      "day": 1,
+      "theme": "MARKET MAKER",
+      "subtitle": "Platform/Credibility Focus",
+      "posts": [
+        {
+          "slot": 1,
+          "time_sast": "00:00",
+          "platform": "LinkedIn",
+          "visual_description": "Darkened Studex Global Markets UI screenshot",
+          "content_angle": "Markets don't close. They just verify.",
+          "cta": "Apply for Private Account access",
+          "keywords": ["verification", "infrastructure"]
+        },
+        {
+          "slot": 2,
+          "time_sast": "04:00",
+          "platform": "X",
+          "visual_description": "Tumelo at Russia-Africa Forum",
+          "content_angle": "Corridor Power: 41 nations, 1 verified platform",
+          "cta": "Apply now",
+          "keywords": ["Russia-Africa", "verified"]
+        },
+        {
+          "slot": 3,
+          "time_sast": "08:00",
+          "platform": "LinkedIn",
+          "visual_description": "Onboarding Questionnaire PDF",
+          "content_angle": "Pre-KYC eliminates counterparty risk before hello",
+          "cta": "Download questionnaire",
+          "keywords": ["documentation", "compliance"]
+        },
+        {
+          "slot": 4,
+          "time_sast": "12:00",
+          "platform": "LinkedIn",
+          "visual_description": "Alibaba vs Studex Global Markets UI split screen",
+          "content_angle": "Bloomberg Terminal meets African Commodity Trust",
+          "cta": "Waitlist for Enterprise",
+          "keywords": ["interface", "serious traders"]
+        },
+        {
+          "slot": 5,
+          "time_sast": "16:00",
+          "platform": "Instagram",
+          "visual_description": "Black & Gold Verified badge animation",
+          "content_angle": "Public accounts browse. Private accounts trade.",
+          "cta": "Link in bio",
+          "keywords": ["verified", "private accounts"]
+        },
+        {
+          "slot": 6,
+          "time_sast": "20:00",
+          "platform": "LinkedIn",
+          "visual_description": "Encrypted deal room mockup",
+          "content_angle": "Your next counterparties are already background-checked",
+          "cta": "Email info@studex.dev",
+          "keywords": ["encryption", "gated"]
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "theme": "GENETIC EXCELLENCE",
+      "subtitle": "Studex Meat Focus",
+      "posts": [
+        {
+          "slot": 7,
+          "time_sast": "00:00",
+          "platform": "Instagram",
+          "visual_description": "Ankole cattle horns at dawn",
+          "content_angle": "Overnight recovery fuel for the 4AM club",
+          "cta": "Secure your allocation",
+          "keywords": ["Ankole", "recovery"]
+        },
+        {
+          "slot": 8,
+          "time_sast": "04:00",
+          "platform": "Instagram",
+          "visual_description": "Wagyu marbling macro shot",
+          "content_angle": "Omega 3-6-9 optimized. Performance technology.",
+          "cta": "Biltong link",
+          "keywords": ["Wagyu", "Omega", "performance"]
+        },
+        {
+          "slot": 9,
+          "time_sast": "08:00",
+          "platform": "LinkedIn",
+          "visual_description": "Halaal certification document",
+          "content_angle": "Dubai-ready. Riyadh-approved.",
+          "cta": "Middle East partnerships",
+          "keywords": ["Halaal", "compliance"]
+        },
+        {
+          "slot": 10,
+          "time_sast": "12:00",
+          "platform": "Instagram",
+          "visual_description": "Studex Meat packaging Black/Gold",
+          "content_angle": "Packaging that signals intent",
+          "cta": "Wholesale inquiry",
+          "keywords": ["packaging", "premium"]
+        },
+        {
+          "slot": 11,
+          "time_sast": "16:00",
+          "platform": "Instagram",
+          "visual_description": "Boxers training + Steak plated",
+          "content_angle": "Physical capital requires capital nutrition",
+          "cta": "Fuel the fight",
+          "keywords": ["IBA", "athletes"]
+        },
+        {
+          "slot": 12,
+          "time_sast": "20:00",
+          "platform": "Instagram",
+          "visual_description": "Luxury dining Sandton",
+          "content_angle": "Studex Wagyu IS the menu",
+          "cta": "Restaurant partnerships",
+          "keywords": ["luxury", "dining"]
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "theme": "CORRIDOR POWER",
+      "subtitle": "Trade Routes",
+      "posts": [
+        {
+          "slot": 13,
+          "time_sast": "00:00",
+          "platform": "LinkedIn",
+          "visual_description": "Uvelka oat facility",
+          "content_angle": "70% China's oats routed via Studex Wheat",
+          "cta": "Commodity trader apps",
+          "keywords": ["Uvelka", "commodity"]
+        },
+        {"slot": 14, "time_sast": "04:00", "platform": "Instagram", "visual_description": "Rwanda coffee mountains", "content_angle": "Direct from Karongi", "cta": "Coffee wholesale", "keywords": ["Rwanda", "direct trade"]},
+        {"slot": 15, "time_sast": "08:00", "platform": "LinkedIn", "visual_description": "Dubai skyline", "content_angle": "UAE operations live", "cta": "Dubai partners", "keywords": ["Dubai", "Middle East"]},
+        {"slot": 16, "time_sast": "12:00", "platform": "X", "visual_description": "Container ships + blockchain", "content_angle": "Cryptographic provenance", "cta": "Trade verified", "keywords": ["blockchain", "provenance"]},
+        {"slot": 17, "time_sast": "16:00", "platform": "Instagram", "visual_description": "Tumelo with Rwanda contact", "content_angle": "Strategic corridors", "cta": "Coffee focus", "keywords": ["Rwanda", "strategy"]},
+        {"slot": 18, "time_sast": "20:00", "platform": "LinkedIn", "visual_description": "Moscow night MGIMO", "content_angle": "Russia-Africa deals", "cta": "Private account tier", "keywords": ["Russia-Africa", "deals"]}
+      ]
+    },
+    {
+      "day": 4,
+      "theme": "DIGITAL INFRASTRUCTURE",
+      "subtitle": "AI/Archera/Blockchain",
+      "posts": [
+        {"slot": 19, "time_sast": "00:00", "platform": "LinkedIn", "visual_description": "Archera.ai interface", "content_angle": "Cloud optimization for trade margins", "cta": "Studex AI", "keywords": ["Archera", "optimization"]},
+        {"slot": 20, "time_sast": "04:00", "platform": "X", "visual_description": "Server room + coffee", "content_angle": "AI-matched deals", "cta": "Algorithmic trade", "keywords": ["AI", "matching"]},
+        {"slot": 21, "time_sast": "08:00", "platform": "LinkedIn", "visual_description": "Animal Exchange blockchain", "content_angle": "Wildlife tokens to wheat futures", "cta": "Market access", "keywords": ["blockchain", "tokens"]},
+        {"slot": 22, "time_sast": "12:00", "platform": "LinkedIn", "visual_description": "Mobiry analytics dashboard", "content_angle": "A/B testing for commodities", "cta": "Enterprise tools", "keywords": ["analytics", "data-driven"]},
+        {"slot": 23, "time_sast": "16:00", "platform": "Instagram", "visual_description": "FPV drone over Ankole", "content_angle": "Conservation meets commerce", "cta": "Animal Exchange", "keywords": ["conservation", "tokens"]},
+        {"slot": 24, "time_sast": "20:00", "platform": "LinkedIn", "visual_description": "Transaction Verified", "content_angle": "Reputation score = social capital", "cta": "Join verified", "keywords": ["reputation", "trust"]}
+      ]
+    },
+    {
+      "day": 5,
+      "theme": "PHYSICAL CAPITAL",
+      "subtitle": "IBA Boxing/Athletes",
+      "posts": [
+        {"slot": 25, "time_sast": "00:00", "platform": "Instagram", "visual_description": "IBA gloves Black/Gold", "content_angle": "Ankole protein for 12-round lifestyle", "cta": "Athlete nutrition", "keywords": ["IBA", "recovery"]},
+        {"slot": 26, "time_sast": "04:00", "platform": "Instagram", "visual_description": "Boxer ice bath + biltong", "content_angle": "3AM recovery. 6AM markets.", "cta": "Pre-orders", "keywords": ["recovery", "grind"]},
+        {"slot": 27, "time_sast": "08:00", "platform": "LinkedIn", "visual_description": "ICC Durban 41 nations", "content_angle": "450 fighters. 1 sponsor.", "cta": "Corporate sponsorship", "keywords": ["IBA", "450 fighters"]},
+        {"slot": 28, "time_sast": "12:00", "platform": "Instagram", "visual_description": "Ashleigh Ogle victory", "content_angle": "A win for all women", "cta": "Boxing initiative", "keywords": ["women", "impact"]},
+        {"slot": 29, "time_sast": "16:00", "platform": "Instagram", "visual_description": "Tumelo ringside SaltBae", "content_angle": "From ring to table", "cta": "Luxury collab", "keywords": ["SaltBae", "performance"]},
+        {"slot": 30, "time_sast": "20:00", "platform": "X", "visual_description": "Midnight training montage", "content_angle": "Your competition sleeps", "cta": "Stay sharp", "keywords": ["grind", "markets"]}
+      ]
+    },
+    {
+      "day": 6,
+      "theme": "ORIGIN ECONOMY",
+      "subtitle": "Coffee/Wheat/Conservation",
+      "posts": [
+        {"slot": 31, "time_sast": "00:00", "platform": "Instagram", "visual_description": "Rwandan farmer sunrise", "content_angle": "4AM grind. Direct from Karongi.", "cta": "Coffee wholesale", "keywords": ["Rwanda", "coffee"]},
+        {"slot": 32, "time_sast": "04:00", "platform": "LinkedIn", "visual_description": "Uvelka oat fields", "content_angle": "Food security is commodity arbitrage", "cta": "Wheat partners", "keywords": ["Uvelka", "food security"]},
+        {"slot": 33, "time_sast": "08:00", "platform": "LinkedIn", "visual_description": "Rhino Research Fund IVF", "content_angle": "End extinction. Start trading.", "cta": "RR1-50 tokens", "keywords": ["conservation", "impact"]},
+        {"slot": 34, "time_sast": "12:00", "platform": "Instagram", "visual_description": "Meat/Coffee/Wheat spread", "content_angle": "One platform. Three continents.", "cta": "Trade everything", "keywords": ["integration", "verticals"]},
+        {"slot": 35, "time_sast": "16:00", "platform": "LinkedIn", "visual_description": "Ankole herd aerial", "content_angle": "Genetic diversity = risk management", "cta": "Diversify", "keywords": ["genetics", "portfolio"]},
+        {"slot": 36, "time_sast": "20:00", "platform": "Instagram", "visual_description": "Braai Black/Gold", "content_angle": "Even relaxation is optimized", "cta": "Lifestyle", "keywords": ["braai", "performance"]}
+      ]
+    },
+    {
+      "day": 7,
+      "theme": "THE INVITATION",
+      "subtitle": "Onboarding/Private Accounts",
+      "posts": [
+        {"slot": 37, "time_sast": "00:00", "platform": "LinkedIn", "visual_description": "Private Account gold emblem", "content_angle": "Public = spectators. Private = builders.", "cta": "Questionnaire", "keywords": ["private", "gated"]},
+        {"slot": 38, "time_sast": "04:00", "platform": "X", "visual_description": "Boardroom Studex UI", "content_angle": "Speed is credibility", "cta": "Apply now", "keywords": ["verification", "speed"]},
+        {"slot": 39, "time_sast": "08:00", "platform": "LinkedIn", "visual_description": "Studex ecosystem diagram", "content_angle": "One credibility layer. Zero weak links.", "cta": "Join Group", "keywords": ["ecosystem", "integration"]},
+        {"slot": 40, "time_sast": "12:00", "platform": "LinkedIn", "visual_description": "Tumelo direct address", "content_angle": "I build ecosystems. You're invited.", "cta": "info@studex.dev", "keywords": ["vision", "architecture"]},
+        {"slot": 41, "time_sast": "16:00", "platform": "Instagram", "visual_description": "Application form", "content_angle": "72-hour verification guarantee", "cta": "Link in bio", "keywords": ["verification", "clearance"]},
+        {"slot": 42, "time_sast": "20:00", "platform": "All", "visual_description": "Black screen Gold text", "content_angle": "End Extinction. Start Trading. Build Legacy.", "cta": "Begin Week 2", "keywords": ["legacy", "mission"]}
+      ]
+    }
+  ]
+}
