@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Sentinel's Ollama Wrapper for StudEx Swarm
+# Intercepts 'launch' command to use Spawn + Cloud Models
+
+REAL_OLLAMA="/usr/local/bin/ollama"
+export OPENROUTER_API_KEY="894499edb2a943068a687d38bb5857cc.O76_iscpp4yS6SpoOKXaiP6VDESKTOP-2EE3MR8"
+
+if [ "$1" == "launch" ]; then
+    shift
+    AGENT_NAME=$1
+    shift
+    
+    # Check for --model flag
+    MODEL_ID=""
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --model)
+                MODEL_ID="$2"
+                shift 2
+                ;;
+            *)
+                shift
+                ;;
+        esac
+    done
+
+    if [ -n "$MODEL_ID" ]; then
+        echo "[Sentinel] Launching $AGENT_NAME via Spawn with model $MODEL_ID..."
+        spawn "$AGENT_NAME" local --model "$MODEL_ID"
+    else
+        echo "[Sentinel] No model specified. Defaulting to Spawn interactive."
+        spawn "$AGENT_NAME" local
+    fi
+else
+    # Pass through to real ollama
+    $REAL_OLLAMA "$@"
+fi
