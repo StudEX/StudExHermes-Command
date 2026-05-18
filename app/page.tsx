@@ -16,34 +16,50 @@ const TimeZoneClock = ({ city, zone }: { city: string, zone: string }) => {
   }, [zone]);
   return (
     <div className="flex flex-col items-center p-2 border border-orange-200/20 rounded bg-white/5">
-      <span className="text-[10px] text-orange-400 uppercase tracking-widest">{city}</span>
-      <span className="text-sm font-bold text-[#f5f5f0]">{time}</span>
+      <span className="text-[10px] text-orange-500 uppercase tracking-widest">{city}</span>
+      <span className="text-sm font-bold text-gray-800">{time}</span>
     </div>
   );
 };
 
+const SpeedMonitor = () => {
+  const [speed, setSpeed] = useState(842);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSpeed(prev => Math.max(800, Math.min(950, prev + (Math.random() * 10 - 5))));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+  return <span className="text-[#ff6b00] font-bold">{speed.toFixed(1)} MB/S</span>;
+};
+
 export default function Home() {
-  const [speed, setSpeed] = useState('FETCHING...');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState('');
+  const [hermesStatus, setHermesStatus] = useState('IDLE');
 
   if (!isLoggedIn) {
     return (
-      <main className="min-h-screen bg-[#f5f5f0] flex items-center justify-center font-mono">
-        <div className="bg-white p-12 border-4 border-[#ff4500] shadow-[10px_10px_0px_#ff4500]">
-          <h1 className="text-2xl font-bold mb-6 text-[#1a1a1a]">STUDEX ACCESS GATEWAY</h1>
+      <main className="min-h-screen bg-[#fcfaf8] flex items-center justify-center font-mono">
+        <div className="bg-white p-12 border-2 border-[#ff6b00] shadow-[20px_20px_0px_#1a1a1a]">
+          <div className="flex justify-center mb-8">
+             <div className="w-20 h-20 bg-[#1a1a1a] flex items-center justify-center border-2 border-[#ff6b00] rotate-45">
+                <span className="text-[#ffff00] font-black text-2xl -rotate-45">SX</span>
+             </div>
+          </div>
+          <h1 className="text-xl font-black mb-6 text-center tracking-widest text-[#1a1a1a]">STUDEX ACCESS GATEWAY</h1>
           <input 
             type="password" 
-            placeholder="ENTER PROTOCOL"
-            className="w-full p-2 border-2 border-[#1a1a1a] mb-4 outline-none focus:border-[#ff4500]"
+            placeholder="PROTOCOL_KEY"
+            className="w-full p-3 border-2 border-gray-200 mb-4 outline-none focus:border-[#ff6b00] text-center"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button 
             onClick={() => password === '12345' ? setIsLoggedIn(true) : alert('DENIED')}
-            className="w-full bg-[#1a1a1a] text-white p-2 font-bold hover:bg-[#ff4500] transition-colors"
+            className="w-full bg-[#1a1a1a] text-white p-3 font-bold hover:bg-[#ff6b00] transition-all transform active:scale-95"
           >
-            AUTHORIZE
+            AUTHORIZE SESSION
           </button>
         </div>
       </main>
@@ -51,101 +67,123 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f5f0] text-[#1a1a1a] p-6 font-mono selection:bg-orange-200">
-      {/* Header with Global Clocks */}
-      <header className="mb-8 border-b-2 border-orange-500/30 pb-4">
-        <div className="flex justify-between items-start mb-6">
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-[#1a1a1a] flex items-center justify-center border-2 border-[#ff4500]">
-              <span className="text-[#ffff00] font-black text-xl italic">SX</span>
-            </div>
-            <div>
-              <h1 className="text-3xl font-black italic tracking-tighter text-[#1a1a1a]">
-                HERMES <span className="text-[#ff4500]">COMMAND</span>
-              </h1>
-              <p className="text-[10px] text-orange-600 font-bold tracking-[0.2em]">AGENT LORD // SENTINEL CTO</p>
-            </div>
+    <main className="min-h-screen bg-[#fcfaf8] text-[#1a1a1a] p-8 font-mono selection:bg-orange-100">
+      {/* Background Smasher Watermark */}
+      <div className="fixed inset-0 pointer-events-none opacity-[0.03] flex items-center justify-center overflow-hidden">
+        <div className="w-[800px] h-[800px] bg-orange-500 rounded-full blur-[100px] absolute -top-40 -right-40"></div>
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/en/3/3b/Adam_Smasher_Cyberpunk_2077.png" 
+          alt="Adam Smasher" 
+          className="w-full max-w-4xl object-contain"
+        />
+      </div>
+
+      <header className="relative z-10 mb-12 flex justify-between items-start border-b border-orange-100 pb-8">
+        <div className="flex items-center gap-6">
+          <div className="w-16 h-16 bg-[#1a1a1a] flex items-center justify-center border-2 border-[#ff6b00] group cursor-pointer hover:rotate-12 transition-transform">
+            <span className="text-[#ffff00] font-black text-xl italic">SX</span>
           </div>
-          <div className="flex gap-2">
-            <TimeZoneClock city="London" zone="Europe/London" />
-            <TimeZoneClock city="Dubai" zone="Asia/Dubai" />
-            <TimeZoneClock city="Beijing" zone="Asia/Shanghai" />
-            <TimeZoneClock city="S. Africa" zone="Africa/Johannesburg" />
-            <TimeZoneClock city="SF" zone="America/Los_Angeles" />
+          <div>
+            <h1 className="text-4xl font-black italic tracking-tighter">
+              HERMES <span className="text-[#ff6b00]">COMMAND</span>
+            </h1>
+            <div className="flex items-center gap-4 mt-2">
+              <span className="text-[10px] bg-[#1a1a1a] text-white px-2 py-0.5 font-bold">AGENT LORD</span>
+              <span className="text-[10px] border border-orange-500 text-orange-600 px-2 py-0.5 font-bold">SENTINEL CTO</span>
+            </div>
           </div>
         </div>
-        
-        {/* Smasher Branding Overlay (Subtle) */}
-        <div className="absolute top-0 right-0 opacity-10 pointer-events-none grayscale">
-           {/* Placeholder for Adam Smasher asset */}
-           <div className="w-96 h-96 bg-gradient-to-bl from-orange-500 to-transparent"></div>
+
+        <div className="grid grid-cols-5 gap-3">
+          <TimeZoneClock city="London" zone="Europe/London" />
+          <TimeZoneClock city="Dubai" zone="Asia/Dubai" />
+          <TimeZoneClock city="Beijing" zone="Asia/Shanghai" />
+          <TimeZoneClock city="S. Africa" zone="Africa/Johannesburg" />
+          <TimeZoneClock city="SF" zone="America/Los_Angeles" />
         </div>
       </header>
 
-      <div className="grid grid-cols-12 gap-6">
-        {/* Main Swarm Control */}
-        <div className="col-span-12 lg:col-span-8 space-y-6">
-          <section className="bg-white border-2 border-orange-500/20 p-6 shadow-sm">
-            <h2 className="text-sm font-bold mb-4 border-l-4 border-[#ff4500] pl-2 uppercase">Active Swarm Triad</h2>
-            <div className="grid grid-cols-3 gap-4">
-              {['HERMES', 'OPENCLAW', 'CODEX'].map(agent => (
-                <div key={agent} className="p-4 border border-orange-100 bg-[#fafaf7] hover:border-[#ff4500] transition-all">
-                  <h3 className="font-bold text-sm">{agent}</h3>
-                  <p className="text-[10px] text-orange-600 mb-4 italic">API: CONNECTED</p>
-                  <button className="w-full text-[10px] bg-[#1a1a1a] text-white py-1 font-bold">ACTIVATE</button>
+      <div className="relative z-10 grid grid-cols-12 gap-8">
+        {/* Left Column: Swarm & Cursor */}
+        <div className="col-span-12 lg:col-span-8 space-y-8">
+          <section className="bg-white border border-gray-100 p-8 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-1 h-full bg-[#ff6b00]"></div>
+            <h2 className="text-xs font-black mb-6 tracking-widest text-gray-400 uppercase">ACTIVE SWARM TRIAD (LOCAL MESH)</h2>
+            <div className="grid grid-cols-3 gap-6">
+              {[
+                { name: 'HERMES', model: 'KIMI-K2.6:CLOUD', color: 'orange' },
+                { name: 'OPENCLAW', model: 'GLM-5.1:CLOUD', color: 'blue' },
+                { name: 'CODEX', model: 'MINIMAX-01:CLOUD', color: 'green' }
+              ].map(agent => (
+                <div key={agent.name} className="p-6 border border-gray-50 bg-[#fafafa] group hover:border-orange-200 transition-all cursor-pointer">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="font-bold text-lg">{agent.name}</h3>
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                  </div>
+                  <p className="text-[10px] text-gray-500 mb-6">{agent.model}</p>
+                  <button 
+                    onClick={() => agent.name === 'HERMES' && setHermesStatus('CONNECTED')}
+                    className="w-full py-2 bg-[#1a1a1a] text-white text-[10px] font-black tracking-widest hover:bg-[#ff6b00] transition-colors"
+                  >
+                    DEPLOY
+                  </button>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="bg-white border-2 border-orange-500/20 p-6 shadow-sm">
-            <h2 className="text-sm font-bold mb-4 border-l-4 border-blue-500 pl-2 uppercase">Cursor Cloud Agents</h2>
-            <div className="flex gap-4">
-              <button className="flex-1 p-4 border border-blue-100 bg-blue-50/30 hover:bg-blue-50 text-blue-800 text-xs font-bold">
-                INITIATE CLOUD REFACTORING
+          <section className="bg-white border border-gray-100 p-8 shadow-sm">
+            <h2 className="text-xs font-black mb-6 tracking-widest text-gray-400 uppercase">CURSOR CLOUD AGENTS (REMOTE CONTROL)</h2>
+            <div className="flex gap-6">
+              <button className="flex-1 p-6 border-2 border-dashed border-gray-200 hover:border-blue-400 group transition-all">
+                <span className="block text-sm font-bold group-hover:text-blue-600">INITIATE CLOUD REFACTOR</span>
+                <span className="text-[10px] text-gray-400 italic">Syncing via secure SSH tunnel...</span>
               </button>
-              <button className="flex-1 p-4 border border-blue-100 bg-blue-50/30 hover:bg-blue-50 text-blue-800 text-xs font-bold">
-                SYNC CURSOR CONTEXT
+              <button className="flex-1 p-6 border-2 border-dashed border-gray-200 hover:border-blue-400 group transition-all">
+                <span className="block text-sm font-bold group-hover:text-blue-600">DEPLOY CLOUD COMPOSER</span>
+                <span className="text-[10px] text-gray-400 italic">Targeting production branch...</span>
               </button>
             </div>
           </section>
         </div>
 
-        {/* Sidebar Diagnostics */}
-        <div className="col-span-12 lg:col-span-4 space-y-6">
-          <div className="bg-[#1a1a1a] text-white p-6 border-b-4 border-[#ff4500]">
-            <h2 className="text-xs font-bold mb-4 tracking-widest text-orange-400">SYSTEM DIAGNOSTICS</h2>
-            <div className="space-y-4 text-xs">
-              <div className="flex justify-between border-b border-white/10 pb-2">
-                <span>NET_SPEED</span>
-                <span className="text-[#ffff00]">842 MB/S</span>
+        {/* Right Column: Diagnostics & API */}
+        <div className="col-span-12 lg:col-span-4 space-y-8">
+          <div className="bg-[#1a1a1a] text-white p-8 shadow-xl border-t-8 border-[#ff6b00]">
+            <h2 className="text-xs font-black mb-8 tracking-[0.3em] text-orange-400">SYSTEM DIAGNOSTICS</h2>
+            <div className="space-y-6 text-sm font-bold">
+              <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                <span className="text-gray-500 text-[10px]">NET_STABILITY</span>
+                <SpeedMonitor />
               </div>
-              <div className="flex justify-between border-b border-white/10 pb-2">
-                <span>LOCAL_IP</span>
-                <span className="text-orange-400">172.19.3.154</span>
+              <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                <span className="text-gray-500 text-[10px]">LOCAL_MESH_IP</span>
+                <span className="text-orange-200">172.19.3.154</span>
               </div>
-              <div className="flex justify-between border-b border-white/10 pb-2">
-                <span>UPTIME</span>
-                <span className="text-green-400">99.9%</span>
+              <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                <span className="text-gray-500 text-[10px]">HERMES_API</span>
+                <span className="text-green-400">{hermesStatus}</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-white border-2 border-orange-500/20 p-6">
-            <h2 className="text-xs font-bold mb-4 uppercase">Internal Swarm Mesh</h2>
-            <div className="space-y-2">
-               <div className="w-full bg-orange-100 h-1 rounded-full overflow-hidden">
-                 <div className="bg-[#ff4500] h-full w-[85%]"></div>
+          <div className="bg-white border border-orange-100 p-8 shadow-sm">
+            <h2 className="text-xs font-black mb-4 uppercase text-[#ff6b00]">Hermes API Configuration</h2>
+            <div className="space-y-4">
+               <div className="p-3 bg-gray-50 text-[10px] font-mono break-all border border-gray-100">
+                  ENDPOINT: https://api.studex.group/v1/hermes
                </div>
-               <p className="text-[9px] text-gray-400 italic text-right italic">Syncing across 5 regional nodes...</p>
+               <button className="w-full py-2 border-2 border-[#1a1a1a] text-[10px] font-black hover:bg-gray-50 transition-colors">
+                 GENERATE NEW API KEY
+               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <nav className="fixed bottom-8 right-8 flex gap-4">
-        <a href="/memory" className="bg-white border-2 border-[#1a1a1a] px-4 py-2 text-xs font-bold hover:bg-[#ff4500] hover:text-white transition-all shadow-[4px_4px_0px_#1a1a1a]">MEMORY</a>
-        <a href="/horizon" className="bg-white border-2 border-[#1a1a1a] px-4 py-2 text-xs font-bold hover:bg-[#ff4500] hover:text-white transition-all shadow-[4px_4px_0px_#1a1a1a]">HORIZON</a>
+      <nav className="fixed bottom-8 right-8 flex gap-6 z-50">
+        <a href="/memory" className="bg-white border border-gray-200 px-6 py-3 text-xs font-black hover:border-[#ff6b00] hover:text-[#ff6b00] transition-all shadow-xl">MEMORY</a>
+        <a href="/horizon" className="bg-[#1a1a1a] text-white px-6 py-3 text-xs font-black hover:bg-[#ff6b00] transition-all shadow-xl">HORIZON</a>
       </nav>
     </main>
   );
