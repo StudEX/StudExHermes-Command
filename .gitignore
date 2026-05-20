@@ -32,6 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# Obsidian vault & voice samples — business + biometric data, never commit
+/vault/*
+!/vault/README.md
+/voice_samples/*
+!/voice_samples/README.md
 
 # vercel
 .vercel

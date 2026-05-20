@@ -8,7 +8,31 @@ Our command center leverages a triad of high-performance agents backed by cloud-
 - **Codex (Execution/Optimization):** Powered by `minimax-01:cloud`. Orchestrated via `spawn codex local`.
 
 ## 💼 Customer-Facing
-- **ADA (Sales Agent):** Pattern adapted from [`nazirlouis/ada_v2`](https://github.com/nazirlouis/ada_v2). Lives at `/sales` with backend `app/api/sales/chat`. Routes to the cloud model via `CLOUD_MODEL_API_KEY` / `CLOUD_MODEL_BASE_URL` (default `https://openrouter.ai/api/v1`) using `SALES_AGENT_MODEL` (default `moonshotai/kimi-k2`). Falls back to a deterministic catalog responder when no key is set, so the console stays live for demos.
+- **ADA (Sales Concierge):** Superhuman sales agent at `/sales`. Patterns borrowed from [`nazirlouis/ada_v2`](https://github.com/nazirlouis/ada_v2) (dialog loop) and [`dograh-hq/dograh`](https://github.com/dograh-hq/dograh) (STT → LLM → TTS pipeline). Full duplex live-call mode with browser-side VAD, OpenAI Whisper STT, Pinecone-grounded RAG, OpenRouter LLM, and ElevenLabs streaming TTS.
+
+### ADA Pipeline
+| Stage | Provider | Env |
+|-------|----------|-----|
+| Voice in | Browser MediaRecorder + Web Audio VAD | — |
+| STT | Whisper-compatible | `STT_API_KEY`, `STT_BASE_URL`, `STT_MODEL` |
+| Retrieval | Pinecone (Obsidian vault) | `PINECONE_API_KEY`, `PINECONE_INDEX_HOST`, `PINECONE_NAMESPACE` |
+| Embeddings | OpenAI-compatible | `EMBEDDING_API_KEY`, `EMBEDDING_BASE_URL`, `EMBEDDING_MODEL` |
+| LLM | OpenRouter (default Kimi K2) | `CLOUD_MODEL_API_KEY`, `CLOUD_MODEL_BASE_URL`, `SALES_AGENT_MODEL` |
+| TTS | ElevenLabs streaming | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID`, `ELEVENLABS_MODEL` |
+| Fallback | Deterministic catalog (always-on demo) | — |
+
+### Routes
+- `POST /api/sales/chat` — RAG-grounded reply (web or voice channel)
+- `POST /api/sales/voice/stt` — multipart audio → transcript
+- `POST /api/sales/voice/tts` — text → streaming MP3
+- `POST /api/sales/voice/clone` — mint ADA's voice from `voice_samples/`
+- `POST /api/sales/context` — debug Pinecone retrieval
+
+### Knowledge ingestion
+Drop Obsidian markdown into `vault/` (or pass a path), then:
+```bash
+bun run scripts/ingest_vault.ts
+```
 
 ## 🛠 Command Syntax
 Use the Sentinel-Ollama wrapper for rapid deployment:
