@@ -28,6 +28,11 @@ Our command center leverages a triad of high-performance agents backed by cloud-
 - `POST /api/sales/voice/clone` — mint ADA's voice from `voice_samples/`
 - `POST /api/sales/context` — debug Pinecone retrieval
 - `POST /api/whatsapp/webhook` — Twilio WhatsApp webhook (text + voice notes)
+- `GET /api/sales/catalog` — shared product catalog feed (Charlie Tools webhook + ADA channels)
+- `POST /api/memory/ingest` — meeting/call transcript → Obsidian vault + Pinecone
+
+### Meeting & call memory
+ADA/Charlie cannot auto-join calls themselves — pair a meeting-bot service (Recall.ai, Fireflies, Otter export) and point its transcript webhook at `POST /api/memory/ingest`. The receiver writes a markdown note to `vault/meetings/<date>-<slug>.md` (Obsidian) and embeds the transcript into Pinecone under the same namespace ADA retrieves from, so past calls become recallable context. Optional `MEMORY_INGEST_SECRET` gates the endpoint via the `X-Ingest-Secret` header.
 
 ### WhatsApp channel (Twilio)
 Customers message ADA on a Twilio-hosted WhatsApp number. Inbound messages — text or voice notes — are signature-verified, routed through the same `salesReply` brain (RAG + LLM), and replied via the Twilio REST API. Voice notes are downloaded with HTTP Basic auth and transcribed via Whisper. Per-customer conversation state (6h TTL, last 20 turns) persists in Upstash-compatible Redis when `REDIS_REST_URL` + `REDIS_REST_TOKEN` are set, and falls back to per-instance memory otherwise (`lib/session-store.ts`). Env: `TWILIO_ACCOUNT_SID`, `TWILIO_API_KEY_SID` + `TWILIO_API_KEY_SECRET` (or `TWILIO_AUTH_TOKEN`), `TWILIO_WHATSAPP_NUMBER`. Point Twilio Console → Messaging → WhatsApp Sandbox → "When a message comes in" at `https://<your-host>/api/whatsapp/webhook`.
