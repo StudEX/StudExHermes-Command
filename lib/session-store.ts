@@ -1,4 +1,5 @@
 import type { ChatMessage } from './sales-brain'
+import { redisCommand, usingRedis } from './redis'
 
 export type Conversation = { messages: ChatMessage[]; lastTouched: number }
 
@@ -8,37 +9,8 @@ const MAX_TURNS = 20
 // In-memory fallback (per-instance, lost on restart). Used when REDIS_REST_URL is unset.
 const MEMORY = new Map<string, Conversation>()
 
-function restConfig(): { url: string; token: string } | null {
-  const url = process.env.REDIS_REST_URL
-  const token = process.env.REDIS_REST_TOKEN
-  if (!url || !token) return null
-  return { url, token }
-}
-
-// Upstash-compatible REST command. Returns the `result` field or null on any failure.
-async function redisCommand(command: (string | number)[]): Promise<unknown> {
-  const cfg = restConfig()
-  if (!cfg) return null
-  try {
-    const res = await fetch(cfg.url, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${cfg.token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(command),
-    })
-    if (!res.ok) return null
-    const data = await res.json()
-    return data?.result ?? null
-  } catch {
-    return null
-  }
-}
-
 function key(phone: string): string {
   return `ada:convo:${phone}`
-}
-
-export function usingRedis(): boolean {
-  return restConfig() !== null
 }
 
 export async function loadConversation(phone: string): Promise<ChatMessage[]> {
