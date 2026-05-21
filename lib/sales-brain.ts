@@ -1,4 +1,5 @@
 import { pineconeQuery, type RetrievedChunk } from './pinecone'
+import { chatCompletion } from './llm'
 
 export type ChatMessage = { role: 'user' | 'assistant' | 'system'; content: string }
 export type Channel = 'web' | 'voice' | 'whatsapp'
@@ -72,11 +73,6 @@ async function callCloudModel(
   contextBlock: string,
   channel: Channel,
 ): Promise<string | null> {
-  const apiKey = process.env.CLOUD_MODEL_API_KEY
-  const baseUrl = process.env.CLOUD_MODEL_BASE_URL || 'https://openrouter.ai/api/v1'
-  const model = process.env.SALES_AGENT_MODEL || 'moonshotai/kimi-k2'
-  if (!apiKey) return null
-
   const systemMessages: ChatMessage[] = [
     { role: 'system', content: SALES_SYSTEM_PROMPT },
     { role: 'system', content: `Channel: ${channel}` },
@@ -85,25 +81,9 @@ async function callCloudModel(
   if (contextBlock) systemMessages.push({ role: 'system', content: contextBlock })
 
   const maxTokens = channel === 'voice' ? 180 : channel === 'whatsapp' ? 220 : 400
+  const temperature = channel === 'voice' ? 0.55 : 0.65
 
-  try {
-    const res = await fetch(`${baseUrl}/chat/completions`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        model,
-        messages: [...systemMessages, ...messages],
-        temperature: channel === 'voice' ? 0.55 : 0.65,
-        max_tokens: maxTokens,
-      }),
-    })
-    if (!res.ok) return null
-    const data = await res.json()
-    const text = data?.choices?.[0]?.message?.content
-    return typeof text === 'string' && text.trim().length > 0 ? text : null
-  } catch {
-    return null
-  }
+  return chatCompletion([...systemMessages, ...messages], { temperature, maxTokens })
 }
 
 export async function salesReply(

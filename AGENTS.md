@@ -43,6 +43,9 @@ Drop Obsidian markdown into `vault/` (or pass a path), then:
 bun run scripts/ingest_vault.ts
 ```
 
+### Local + cloud model routing (LM Studio)
+The agent brain routes LLM calls through `lib/llm.ts`. `LLM_PROVIDER` selects order: `local`, `cloud`, or `auto` (default — try local first, fall back to cloud). Local models run on an LM Studio (or Ollama) OpenAI-compatible server; set `LOCAL_MODEL_BASE_URL`. To serve other machines on the network, start LM Studio's server bound to `0.0.0.0` and point clients at the host's LAN IP, e.g. `http://192.168.1.50:1234/v1`. Cloud fallback uses `CLOUD_MODEL_*`. A dead local node times out in ~4s and falls back automatically.
+
 ## 🛠 Command Syntax
 Use the Sentinel-Ollama wrapper for rapid deployment:
 ```bash
