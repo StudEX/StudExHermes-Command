@@ -30,7 +30,7 @@ Our command center leverages a triad of high-performance agents backed by cloud-
 - `POST /api/whatsapp/webhook` — Twilio WhatsApp webhook (text + voice notes)
 
 ### WhatsApp channel (Twilio)
-Customers message ADA on a Twilio-hosted WhatsApp number. Inbound messages — text or voice notes — are signature-verified, routed through the same `salesReply` brain (RAG + LLM), and replied via the Twilio REST API. Voice notes are downloaded with HTTP Basic auth and transcribed via Whisper. Per-customer conversation state is held in memory (6h TTL, last 20 turns) — promote to Redis before production. Env: `TWILIO_ACCOUNT_SID`, `TWILIO_API_KEY_SID` + `TWILIO_API_KEY_SECRET` (or `TWILIO_AUTH_TOKEN`), `TWILIO_WHATSAPP_NUMBER`. Point Twilio Console → Messaging → WhatsApp Sandbox → "When a message comes in" at `https://<your-host>/api/whatsapp/webhook`.
+Customers message ADA on a Twilio-hosted WhatsApp number. Inbound messages — text or voice notes — are signature-verified, routed through the same `salesReply` brain (RAG + LLM), and replied via the Twilio REST API. Voice notes are downloaded with HTTP Basic auth and transcribed via Whisper. Per-customer conversation state (6h TTL, last 20 turns) persists in Upstash-compatible Redis when `REDIS_REST_URL` + `REDIS_REST_TOKEN` are set, and falls back to per-instance memory otherwise (`lib/session-store.ts`). Env: `TWILIO_ACCOUNT_SID`, `TWILIO_API_KEY_SID` + `TWILIO_API_KEY_SECRET` (or `TWILIO_AUTH_TOKEN`), `TWILIO_WHATSAPP_NUMBER`. Point Twilio Console → Messaging → WhatsApp Sandbox → "When a message comes in" at `https://<your-host>/api/whatsapp/webhook`.
 
 ### Knowledge ingestion
 Drop Obsidian markdown into `vault/` (or pass a path), then:

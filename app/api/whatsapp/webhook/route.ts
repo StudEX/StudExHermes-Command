@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { salesReply, type ChatMessage } from '@/lib/sales-brain'
+import { loadConversation, saveTurn } from '@/lib/session-store'
 import {
   downloadTwilioMedia,
   sendWhatsAppText,
@@ -8,33 +9,6 @@ import {
 } from '@/lib/twilio'
 
 export const runtime = 'nodejs'
-
-type Conversation = { messages: ChatMessage[]; lastTouched: number }
-
-const CONVERSATIONS = new Map<string, Conversation>()
-const CONVO_TTL_MS = 1000 * 60 * 60 * 6
-const MAX_TURNS = 20
-
-function getConversation(phone: string): ChatMessage[] {
-  const now = Date.now()
-  const existing = CONVERSATIONS.get(phone)
-  if (existing && now - existing.lastTouched < CONVO_TTL_MS) {
-    existing.lastTouched = now
-    return existing.messages
-  }
-  const fresh: Conversation = { messages: [], lastTouched: now }
-  CONVERSATIONS.set(phone, fresh)
-  return fresh.messages
-}
-
-function pushTurn(phone: string, user: string, assistant: string) {
-  const convo = getConversation(phone)
-  convo.push({ role: 'user', content: user })
-  convo.push({ role: 'assistant', content: assistant })
-  if (convo.length > MAX_TURNS * 2) {
-    convo.splice(0, convo.length - MAX_TURNS * 2)
-  }
-}
 
 async function transcribeAudio(blob: Blob): Promise<string> {
   const apiKey = process.env.STT_API_KEY || process.env.OPENAI_API_KEY
@@ -106,15 +80,16 @@ export async function POST(req: NextRequest) {
     })
   }
 
-  const convo = getConversation(from)
-  const turnMessages: ChatMessage[] = [...convo, { role: 'user', content: userText }]
+  const capturedText = userText
 
   setImmediate(async () => {
     try {
+      const convo = await loadConversation(from)
+      const turnMessages: ChatMessage[] = [...convo, { role: 'user', content: capturedText }]
       const reply = await salesReply(turnMessages, 'whatsapp')
-      pushTurn(from, userText, reply.content)
+      await saveTurn(from, capturedText, reply.content)
       await sendWhatsAppText(from, reply.content)
-    } catch (err) {
+    } catch {
       await sendWhatsAppText(from, 'My line dropped for a second — could you repeat that?')
     }
   })
