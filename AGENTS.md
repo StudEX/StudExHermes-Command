@@ -7,6 +7,17 @@ Our command center leverages a triad of high-performance agents backed by cloud-
 - **OpenClaw (Logic/Technical):** Powered by `glm-5.1:cloud`. Orchestrated via `spawn openclaw local`.
 - **Codex (Execution/Optimization):** Powered by `minimax-01:cloud`. Orchestrated via `spawn codex local`.
 
+## 🧠 The Second Brain (shared knowledge)
+Every agent draws on one shared knowledge base: the StudEx Obsidian vault plus ingested
+meeting/call transcripts, embedded into Pinecone under `PINECONE_NAMESPACE`. Agents read it
+over HTTP via `GET|POST /api/brain/query` (optionally gated by `BRAIN_API_KEY`), so customer
+and internal agents stay consistent. Writes flow in through `POST /api/memory/ingest` and the
+`scripts/ingest_vault.ts` ingest job.
+
+## 🛰️ Internal / Team Agents (separate services)
+- **OpenJarvis (Autonomous/Local):** Local-first agent framework ([`open-jarvis/OpenJarvis`](https://github.com/open-jarvis/OpenJarvis)) for scheduled/continuous internal automation (daily sales digest, deep research, monitoring). Runs as its own service (Ollama-backed); reads the Second Brain via `/api/brain/query` and shares the Pinecone namespace. **Planned — not deployed.**
+- **QwenPaw (Team Channels):** Multi-channel team assistant (Discord/Telegram, Slack via plugin). Runs as its own service; see `QWENPAW_INTEGRATION.md`. **Planned — not deployed.**
+
 ## 💼 Customer-Facing
 - **ADA (Sales Concierge):** Superhuman sales agent at `/sales`. Patterns borrowed from [`nazirlouis/ada_v2`](https://github.com/nazirlouis/ada_v2) (dialog loop) and [`dograh-hq/dograh`](https://github.com/dograh-hq/dograh) (STT → LLM → TTS pipeline). Full duplex live-call mode with browser-side VAD, OpenAI Whisper STT, Pinecone-grounded RAG, OpenRouter LLM, and ElevenLabs streaming TTS.
 
@@ -27,6 +38,7 @@ Our command center leverages a triad of high-performance agents backed by cloud-
 - `POST /api/sales/voice/tts` — text → streaming MP3
 - `POST /api/sales/voice/clone` — mint ADA's voice from `voice_samples/`
 - `POST /api/sales/context` — debug Pinecone retrieval
+- `GET|POST /api/brain/query` — shared Second Brain retrieval for all swarm agents (optional `BRAIN_API_KEY`)
 - `POST /api/whatsapp/webhook` — Twilio WhatsApp webhook (text + voice notes)
 - `GET /api/sales/catalog` — shared product catalog feed (Charlie Tools webhook + ADA channels)
 - `POST /api/memory/ingest` — meeting/call transcript → Obsidian vault + Pinecone
