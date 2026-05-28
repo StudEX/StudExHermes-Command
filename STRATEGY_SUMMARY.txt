@@ -1,0 +1,317 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                  STUDEX GROUP: 90-DAY STRATEGY SUMMARY                          ║
+║                    May 28 - August 20, 2026 | Branch: Feature                   ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+📊 FINANCIAL TARGET
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Current State (May 28):     R92K/month                                       │
+│ 30-Day Target (Jun 28):     R250K/month (+172%)                              │
+│ 90-Day Target (Aug 20):     R1.3M/month (annual R4M run-rate)                │
+│                                                                              │
+│ Path to R4M: 6 VMs + 775 content pieces + B2B outreach + paid ads           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🎯 CRITICAL PATH (NO SLACK - DELAYS = REVENUE LOSS)
+
+   START (May 28)
+       ↓
+   ┌─ VM6 Deploy (2 days) ← BLOCKS EVERYTHING
+   ├─ Shared Services (2 days) ← BLOCKS VM1-5
+   ├─ Stitch Activation (1 day) ← BLOCKS REVENUE
+   ├─ VMs 1-5 Deploy (PARALLEL, 7-10 days)
+   │   └─ VM3 PRIORITY (9 Chiefs swarm - content brain)
+   └─ Content Siege (Jun 15-21, 7 days)
+       └─ REVENUE TARGET: R250K/month
+
+   ⚠️  Each day delay = -R10-50K revenue loss (depending on phase)
+
+🚀 EXECUTION PHASES
+
+Phase 0: Foundation (May 28-Jun 3) — 6 days
+├─ Task: Deploy VM6 + shared infrastructure + Stitch activation
+├─ Owner: Coder Chief + Integrations Chief + Operations Chief
+├─ Effort: 40 hours total team
+├─ Success: All 6 VMs ready to deploy, payment flow live
+└─ Revenue Impact: Foundation for everything else
+
+Phase 1: Core Operations (Jun 4-14) — 11 days
+├─ Task: Deploy VMs 1-5 in parallel, initialize 9 Chiefs, setup mesh
+├─ Owner: Coder Chief (primary) + Content Chief (VM3 focus)
+├─ Effort: 50 hours (parallel deployment)
+├─ Success: All VMs online, agents responding, inter-VM comms working
+└─ Revenue Impact: First B2B leads + early sales (R50-100K)
+
+Phase 2: Revenue Acceleration (Jun 15-30) — 16 days
+├─ Task: 7-day content siege (240+ pieces), B2B outreach, paid ads launch
+├─ Owner: Content Chief (siege) + Operations Chief (outreach) + Strategy Chief (ads)
+├─ Effort: 70 hours (content peak)
+├─ Success: Hitting R250K monthly target by Jun 30
+└─ Revenue Impact: Inflection point (goes positive month-over-month)
+
+Phase 3: Scale & Optimize (Jul 1-Aug 20) — 51 days
+├─ Task: Post 600+/775 pieces, optimize conversion, close wholesale deals
+├─ Owner: All Chiefs (distributed)
+├─ Effort: 120 hours (ongoing operations)
+├─ Success: R1.3M/month revenue, R4M annual run-rate proven
+└─ Revenue Impact: Path to sustained growth
+
+💼 BUSINESS MODEL (5 Revenue Streams)
+
+1. 🥩 Studex Meat (VM1)
+   └─ Model: DTC e-commerce + B2B wholesale
+   └─ Target: R1.8-3.6M Year 1
+   └─ Status: Shopify + Stitch BNPL ready, 85 B2B contacts queued
+
+2. 🏭 Dark Factory (VM2)
+   └─ Model: SaaS (BMAD platform) + BNPL payments
+   └─ Target: R600K-1.7M Year 1
+   └─ Status: Platform ready, agent deployment pending
+
+3. 🧠 Naledi Nexus (VM3) ⭐ PRIORITY
+   └─ Model: Enterprise subscriptions for agent services
+   └─ Target: R600K-2.4M Year 1
+   └─ Status: 9 Chiefs swarm (brain) - enables all content generation
+   └─ Critical: Content pipeline depends on this
+
+4. ⚡ Agentic Lab (VM4)
+   └─ Model: Agency retainers (multi-client)
+   └─ Target: R720K-2.4M Year 1
+   └─ Status: Client acquisition pipeline ready
+
+5. 💳 Stitch Money (VM5)
+   └─ Model: BNPL commission (3-6% per transaction)
+   └─ Target: R120K-600K Year 1
+   └─ Status: Integration ready, attached to Studex Meat
+
+🤖 THE 9 CHIEFS SWARM (Naledi Nexus - VM3)
+
+These agents run in parallel on a single 8GB/4CPU VM:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ Chief        │ Function              │ Model           │ Tools      │
+├─────────────────────────────────────────────────────────────────────┤
+│ Researcher   │ Market analysis       │ Gemini Flash    │ Web search │
+│ Coder        │ App development       │ Claude Sonnet   │ GitHub     │
+│ Heartbeat    │ System monitoring     │ Qwen 1.5B       │ Docker     │
+│ Content      │ Post generation       │ Hermes 8B       │ Higgsfield │
+│ Strategy     │ Business roadmap      │ Claude Sonnet   │ Analytics  │
+│ Operations   │ Workflow automation   │ Qwen 7B         │ n8n        │
+│ Data         │ Analytics & BI        │ Gemini Flash    │ Metabase   │
+│ Security     │ Compliance & threat   │ Qwen 7B         │ Audit logs │
+│ Integrations │ API bridges           │ Claude Sonnet   │ Stitch API │
+└─────────────────────────────────────────────────────────────────────┘
+
+Key advantage: All 9 run on LOCAL INFERENCE (Ollama) = R0 cost
+Result: 88% of work free, only 2% needs expensive cloud models
+
+📅 WEEKLY MILESTONES
+
+Week 1 (May 28-Jun 3)  ← YOU ARE HERE
+├─ [ ] VM6 deployed & monitoring live
+├─ [ ] Shared services (Postgres, Redis, Tailscale) online
+├─ [ ] Stitch Express payment flow verified
+├─ [ ] B2B email campaign queued (85 contacts)
+├─ Success Metric: Foundation 100% complete, VMs ready to deploy
+└─ Revenue: R92K (no change yet)
+
+Week 2 (Jun 4-10)
+├─ [ ] All 5 business VMs deployed & online
+├─ [ ] 9 Chiefs swarm initialized & responsive
+├─ [ ] Inter-VM communication tested
+├─ [ ] Content pipeline generating 50+/day pieces
+├─ Success Metric: All systems operational, Stitch processing live sales
+└─ Revenue: R100-150K (early sales + B2B leads)
+
+Week 3 (Jun 11-17)
+├─ [ ] 7-day content siege launched (240 pieces in 7 days)
+├─ [ ] B2B outreach showing 1-2 conversions
+├─ [ ] Paid acquisition campaigns live
+├─ [ ] TikTok: 10K+ views on viral content
+├─ Success Metric: Revenue accelerating, viral traction visible
+└─ Revenue: R200K (ramping)
+
+Week 4 (Jun 18-24)
+├─ [ ] 300+ pieces posted from 775 (39% complete)
+├─ [ ] B2B pipeline: 3-5 leads, 1-2 orders
+├─ [ ] Email engagement: 25%+ open rate
+├─ [ ] Paid ads: 2x+ ROAS on winners
+├─ Success Metric: R250K/month target hit
+└─ Revenue: R250K+ (target achieved)
+
+✅ IMMEDIATE ACTION ITEMS (Today - May 28)
+
+Priority 1: START VM6 DEPLOYMENT (Blocker for everything else)
+├─ Owner: Coder Chief
+├─ Tasks: Install flyctl → Create Fly.io account → Containerize OpenCLAW → Deploy
+├─ Timeline: 2 days (May 28-29)
+├─ Blocker: YES (all other work waits on this)
+└─ Success: VM6 live and accessible at tumelo-command-center.fly.dev
+
+Priority 2: ACTIVATE STITCH EXPRESS (Blocker for revenue)
+├─ Owner: Operations Chief
+├─ Tasks: Phase 1 (payment app) → Phase 2 (checkout) → Testing
+├─ Timeline: 3 hours total
+├─ Blocker: YES (needed for first sales to process)
+└─ Success: Test order processed, appears in Stitch dashboard
+
+Priority 3: PREPARE FOR PARALLEL DEPLOYMENT (Once VM6 ready)
+├─ Owner: Coder Chief + All Chiefs
+├─ Tasks: Prep Dockerfiles → Test locally → Ready for Jun 1 launch
+├─ Timeline: May 29-31 (while waiting for VM6 to stabilize)
+├─ Blocker: NO (can prepare in parallel)
+└─ Success: All 5 VM deployment scripts ready to execute
+
+Priority 4: QUEUE B2B EMAIL CAMPAIGN (Start Jun 1)
+├─ Owner: Operations Chief
+├─ Tasks: Import 85 contacts → Set up AgentMail → Create 3-email sequence
+├─ Timeline: May 28-30 (can start immediately)
+├─ Blocker: NO (independent of VMs)
+└─ Success: First batch queued, ready to send Jun 1
+
+⚠️ CRITICAL BLOCKERS
+
+If VM6 deployment fails:
+├─ Impact: Entire project blocked (can't deploy other VMs)
+├─ Recovery: 1 day (use rollback, rebuild Dockerfile)
+├─ Mitigation: Pre-stage Dockerfile, test locally first
+└─ Action: Start immediately, have rollback plan
+
+If Stitch integration fails:
+├─ Impact: Can't process e-commerce revenue
+├─ Recovery: 1 day (switch to bank transfer, process manually)
+├─ Mitigation: Test payment flow twice before going live
+└─ Action: Test thoroughly on May 29-30
+
+If content pipeline fails:
+├─ Impact: Can't generate posts at scale (manual only)
+├─ Recovery: 2 hours (switch to manual posting)
+├─ Mitigation: Pre-generate content queue, have backup system
+└─ Action: Start with 100 pieces, not 240, until stable
+
+🎯 SUCCESS CRITERIA (90 Days)
+
+✅ Technical Metrics
+├─ 6 VMs deployed and 99.9% uptime
+├─ 9 Chiefs swarm responding to commands
+├─ 99%+ agent task success rate
+├─ Inter-VM communication working (50+ daily cross-VM calls)
+└─ System handles 1K concurrent users
+
+✅ Business Metrics
+├─ R1.3M/month revenue run-rate established
+├─ 600+/775 content pieces posted
+├─ 10+ wholesale B2B clients signed
+├─ 5,000+ social media followers
+├─ 500+ email subscribers
+└─ 2.5x+ ROAS on paid advertising
+
+✅ Operational Metrics
+├─ Content posted daily (100+ pieces/day at peak)
+├─ B2B emails: 500/day outreach capacity
+├─ Paid acquisition: R3K+/week spend with positive ROI
+├─ Team efficiency: 7.4 hrs/day average (manageable burn)
+└─ Zero unplanned downtime (>99.9%)
+
+💰 FINANCIAL SUMMARY
+
+Costs (27 days May 28-Jun 24):
+├─ Fly.io VMs: R3.5K/month → R3K for partial month
+├─ APIs: R2-5K → R1K for partial
+├─ Domain: R200 (one-time)
+├─ Content: R1-3K → R1.5K
+├─ Paid Ads: R3K/week → R6K for 2 weeks
+└─ Total: ~R15K investment
+
+Revenue (May 28-Jun 24):
+├─ Studex Meat (direct): R50-100K
+├─ B2B Wholesale: R50-100K
+├─ Early agency: R20-50K
+├─ BNPL commissions: R5-10K
+└─ Total: R125-260K (breakeven by Jun 24)
+
+By Aug 20 (90 days):
+├─ Cumulative revenue: R800K-1.2M
+├─ Cumulative costs: R60K
+└─ Net profit: R740K-1.14M ✅ POSITIVE
+
+🚨 DECISION NEEDED TODAY (May 28)
+
+Go/No-Go Decision: PARALLEL VM DEPLOYMENT
+
+Option A: Parallel (Recommended)
+├─ Deploy VMs 1-5 together after VM6 ready
+├─ Timeline: 10 days (Jun 1-10)
+├─ Revenue: R250K by Jun 30 ✅
+├─ Risk: Medium (requires strong monitoring)
+└─ Decision: RECOMMENDED ✅
+
+Option B: Sequential (Safe but slow)
+├─ Deploy VMs one by one
+├─ Timeline: 20 days (Jun 1-20)
+├─ Revenue: R150K by Jun 30 (delayed)
+├─ Risk: Low (easier to debug)
+└─ Decision: NOT RECOMMENDED (loses R100K revenue)
+
+VOTE: Type "PARALLEL" or "SEQUENTIAL" in standup
+
+📞 ESCALATION CONTACTS
+
+If Technical Blocker:
+├─ Coder Chief: VM deployment, Fly.io issues
+├─ Integrations Chief: Mesh network, API integration
+├─ Heartbeat Chief: System health, agent failures
+└─ Escalation time: 4 hours max for critical issues
+
+If Revenue Blocker:
+├─ Operations Chief: Payment processing, customer issues
+├─ Strategy Chief: Sales pipeline, conversion issues
+└─ Escalation time: Immediate (same day fix required)
+
+If Content Blocker:
+├─ Content Chief: Post generation, pipeline issues
+└─ Escalation time: 2 hours (affects daily posting)
+
+📋 DOCUMENTS IN THIS BRANCH
+
+1. STRATEGY_EXECUTION_PLAN.md (This document - high level)
+   └─ Executive overview, financial roadmap, phase definitions
+
+2. IMPLEMENTATION_CHECKLIST.md (Detailed - task-level)
+   └─ Week-by-week tasks, ownership, verification steps
+
+3. CRITICAL_PATH_ANALYSIS.md (Deep dive - dependency & risk)
+   └─ Sequencing decisions, resource allocation, contingencies
+
+4. STRATEGY_SUMMARY.txt (Quick reference - YOU ARE HERE)
+   └─ One-page overview for daily standup & decisions
+
+👥 TEAM ALLOCATION (27 Days)
+
+Coder Chief:     100 hours (3.7 hrs/day) - PEAK (83% utilization)
+Content Chief:    70 hours (2.6 hrs/day) - HIGH during siege
+Operations Chief:  40 hours (1.5 hrs/day) - STEADY
+Integrations Chief: 25 hours (0.9 hrs/day) - FRONT-LOADED
+Heartbeat Chief:   30 hours (1.1 hrs/day) - STEADY, monitoring
+
+Total Team Load: 200 hours (7.4 hrs/day average)
+
+⚠️ Recommendation: Consider backup Coder Chief for weeks 2-3
+   └─ Cost: R5-10K | ROI: R300K+ (earned revenue from on-time delivery)
+
+════════════════════════════════════════════════════════════════════════════════
+
+NEXT STEP: Review full documents in repository:
+├─ STRATEGY_EXECUTION_PLAN.md (30 min read)
+├─ IMPLEMENTATION_CHECKLIST.md (1 hour detailed review)
+└─ CRITICAL_PATH_ANALYSIS.md (45 min for decision-makers)
+
+DECISION CHECKPOINT: Jun 3 (Go-No-Go for Phase 2)
+NEXT MILESTONE: Jun 24 (Revenue target R250K/month)
+FINAL TARGET: Aug 20 (R4M annual run-rate established)
+
+════════════════════════════════════════════════════════════════════════════════
+
+Generated: May 28, 2026 | Branch: claude/brave-wozniak-6BzGE
+Owner: Sentinel (CTO) + Agent Lord
+Status: READY FOR EXECUTION
