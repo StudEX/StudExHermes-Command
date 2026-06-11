@@ -32,6 +32,10 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# vendored agent tooling (cloned via scripts/setup_vendor.sh)
+/vendor/
 
 # vercel
 .vercel

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 
 const TimeZoneClock = ({ city, zone }: { city: string, zone: string }) => {
