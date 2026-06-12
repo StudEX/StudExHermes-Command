@@ -25,8 +25,16 @@ All swarm agents communicate over **Reload** (`@reload.chat/sdk`). The integrati
 ## 🧠 Memory
 `lib/memory/agentMemory.ts` wraps Reload's workspace context graph (`remember` / `recall` / `bootstrapContext`, with provenance pointers). An optional self-hosted [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) backend can be enabled by running `scripts/setup_vendor.sh` and setting `AGENT_MEMORY_URL`.
 
-## 🎨 Content Pipeline (Freepik)
-`lib/content/freepik.ts` connects the Freepik membership to Hermes' content workflow: `searchStock()` for stock assets and `generateImage()` for AI imagery (meat store campaigns, marketing content). Requires `FREEPIK_API_KEY`.
+## 🎨 Content Pipeline (Freepik + Gemini)
+Hermes' content workflow pairs AI copy with imagery:
+- `lib/content/gemini.ts` — Google Gemini text generation (`generateText`, `draftCampaignCopy`). Requires `GEMINI_API_KEY` (an `AIza…` key from aistudio.google.com); model via optional `GEMINI_MODEL`.
+- `lib/content/freepik.ts` — Freepik `searchStock()` for stock assets and `generateImage()` for AI imagery. Requires `FREEPIK_API_KEY`.
+- Combined endpoint: `POST /api/content/generate` with `{ brief, imageMode?: 'stock' | 'generate', imageTerm? }` returns `{ copy, imagery }`.
+
+> Google Drive / Calendar / Gmail are **not** wired — they need a full OAuth2 client (client id + secret + refresh token), not an API key.
+
+## 🛰️ MCP
+`.mcp.json` registers the Reload MCP server (`https://mcp.reload.chat/mcp`) for agent tooling; its bearer token is expanded from `RELOAD_API_TOKEN` at runtime, never committed.
 
 ## 🧰 Skill Packs
 Run `scripts/setup_vendor.sh` to pull [obsidian-skills](https://github.com/kepano/obsidian-skills) into `./vendor/obsidian-skills` and point agent skill loaders there.
