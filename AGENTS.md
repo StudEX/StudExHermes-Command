@@ -1,11 +1,30 @@
 # 🤖 StudEx Hermes Swarm Agents
 
-Our command center leverages a triad of high-performance agents backed by cloud-hosted models (Kimi, Minimax, GLM-5.1) through the Sentinel-Ollama bridge.
+Command center for a multi-business agent fleet. Triad of reasoning agents
+(Hermes / OpenClaw / Codex) plus customer-facing concierges (ADA, Charlie,
+Onboarding). Sentinel CTO orchestrates; every multi-step plan runs the
+**GStack** pre-flight before execution; every paid call goes through
+**CashClaw Guard**.
 
 ## 📡 The Triad
 - **Hermes (Creative/Content):** Powered by `kimi-k2.6:cloud`. Orchestrated via `spawn hermes local`.
 - **OpenClaw (Logic/Technical):** Powered by `glm-5.1:cloud`. Orchestrated via `spawn openclaw local`.
 - **Codex (Execution/Optimization):** Powered by `minimax-01:cloud`. Orchestrated via `spawn codex local`.
+
+## 🧭 The Fleet (single source: `lib/fleet.ts`)
+
+| Agent | Kind | Business | Channels | Skills |
+|---|---|---|---|---|
+| **ADA** | customer | meat, aas | Web, WhatsApp, Voice | cashclaw-guard, gbrain-query, gstack-plan |
+| **Charlie** | customer | meat | Phone | external (voice console) |
+| **Onboarding** | customer | aas | Web | — |
+| **Hermes** | core | group | Internal | obsidian-markdown, defuddle, gstack-plan |
+| **OpenClaw** | core | group | Internal | gbrain-query, gstack-plan |
+| **Codex** | core | group | Internal | gstack-plan |
+| **OpenJarvis** | internal | group | Scheduled | planned |
+| **QwenPaw** | internal | group | Discord, Telegram, Slack | planned |
+
+Live state at `/dashboard`.
 
 ## 🧠 The Second Brain (shared knowledge)
 Every agent draws on one shared knowledge base: the StudEx Obsidian vault plus ingested
@@ -13,6 +32,50 @@ meeting/call transcripts, embedded into Pinecone under `PINECONE_NAMESPACE`. Age
 over HTTP via `GET|POST /api/brain/query` (optionally gated by `BRAIN_API_KEY`), so customer
 and internal agents stay consistent. Writes flow in through `POST /api/memory/ingest` and the
 `scripts/ingest_vault.ts` ingest job.
+
+**Hybrid mode**: when `GBRAIN_BASE_URL` is set, `/api/brain/query` ALSO fans out to a local
+[GBrain](https://github.com/garrytan/gbrain) instance (pgvector + graph + cited synthesis)
+and merges results with Pinecone via `lib/brain.ts`.
+
+## 🛡️ CashClaw Guard (runtime safety)
+
+Inspired by [CashClaw Guard](https://github.com/ertugrulakben/cashclaw). Every paid call
+wraps in `guard.run({ agent, tool, estCostUsd, fn })`. Defaults (override via env):
+
+| Env | Default | Meaning |
+|---|---|---|
+| `GUARD_DAILY_USD_CAP` | `5.00` | Hard fleet-wide ceiling per UTC day |
+| `GUARD_AGENT_MINUTE_CALLS` | `60` | Per-agent rate limit |
+| `GUARD_MAX_RECURSION` | `8` | Nested `guard.run()` depth |
+| `GUARD_TOOL_ALLOWLIST` | `*` | CSV of allowed tools |
+| `GUARD_ALERT_WEBHOOK` | empty | POSTs on cap breach (Telegram/Slack) |
+
+Live limits at `GET /api/guard/limits`. Panic-stop via the **PANIC STOP** button on
+`/dashboard` or `POST /api/guard/limits { "action": "panic" }`.
+
+## ✅ GStack — Sentinel pre-flight
+
+Every plan validates against the rubric in `lib/gstack.ts`:
+
+- **G**oal — one sentence, ends in the artifact
+- **S**teps — ≥2 ordered actions, no hidden swarms
+- **T**ools — all listed, all on `GUARD_TOOL_ALLOWLIST`
+- **A**cceptance — checkable (test, diff, file, URL) — not "looks good"
+- **C**ost — USD est < `guard.limits().dailyRemainingUsd`
+- **K**ill-switch — named: max iterations, time budget, human checkpoint
+
+See `.claude/skills/gstack-plan/SKILL.md` for the calling convention.
+
+## 🧩 Skill catalog (`.claude/skills/`)
+
+| Skill | Source | Purpose |
+|---|---|---|
+| `obsidian-markdown` | [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) | Read/write Obsidian Flavored Markdown |
+| `obsidian-canvas` | [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) | Build JSON Canvas mind-maps / agent topology |
+| `defuddle` | [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) | Strip web-page chrome → clean markdown |
+| `cashclaw-guard` | [ertugrulakben/cashclaw](https://github.com/ertugrulakben/cashclaw) | Runtime cost cap + rate limit + recursion limit |
+| `gbrain-query` | [garrytan/gbrain](https://github.com/garrytan/gbrain) | Hybrid vector+graph search with cited synthesis |
+| `gstack-plan` | StudEx Sentinel | Pre-flight rubric every plan must pass |
 
 ## 🛰️ Internal / Team Agents (separate services)
 - **OpenJarvis (Autonomous/Local):** Local-first agent framework ([`open-jarvis/OpenJarvis`](https://github.com/open-jarvis/OpenJarvis)) for scheduled/continuous internal automation (daily sales digest, deep research, monitoring). Runs as its own service (Ollama-backed); reads the Second Brain via `/api/brain/query` and shares the Pinecone namespace. **Planned — not deployed.**
@@ -38,7 +101,9 @@ and internal agents stay consistent. Writes flow in through `POST /api/memory/in
 - `POST /api/sales/voice/tts` — text → streaming MP3
 - `POST /api/sales/voice/clone` — mint ADA's voice from `voice_samples/`
 - `POST /api/sales/context` — debug Pinecone retrieval
-- `GET|POST /api/brain/query` — shared Second Brain retrieval for all swarm agents (optional `BRAIN_API_KEY`)
+- `GET|POST /api/brain/query` — shared Second Brain retrieval, hybrid Pinecone + GBrain (optional `BRAIN_API_KEY`)
+- `GET|POST /api/guard/limits` — CashClaw Guard status + panic-stop
+- `GET /api/status` — capability readiness (booleans only)
 - `POST /api/whatsapp/webhook` — Twilio WhatsApp webhook (text + voice notes)
 - `GET /api/sales/catalog` — shared product catalog feed (Charlie Tools webhook + ADA channels)
 - `POST /api/memory/ingest` — meeting/call transcript → Obsidian vault + Pinecone
@@ -65,4 +130,10 @@ ollama launch <agent> --model <model:cloud>
 ```
 
 ## 🔭 Strategy
-All agents follow the **Research -> Strategy -> Execution -> Validation** lifecycle managed by **Sentinel (CTO)** and implemented by **Agent Lord** via Cursor.
+All agents follow the **Research → Strategy → Execution → Validation** lifecycle managed by **Sentinel (CTO)** and implemented by **Agent Lord** via Cursor. Each step:
+
+1. Plan → run through `gstack.validate(...)`
+2. Capture context → `gbrain-query` skill
+3. Execute → wrap paid calls in `guard.run(...)`
+4. Validate → check `acceptance` from the plan; surface gaps
+5. Persist → `obsidian-markdown` skill writes back to the vault

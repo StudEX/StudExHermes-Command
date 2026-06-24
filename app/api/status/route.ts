@@ -14,10 +14,16 @@ export async function GET() {
   const capabilities: FleetStatus = {
     llm: Boolean(process.env.CLOUD_MODEL_API_KEY || process.env.LOCAL_MODEL_BASE_URL),
     pinecone: Boolean(process.env.PINECONE_API_KEY && process.env.PINECONE_INDEX_HOST),
-    twilio: Boolean(process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_WHATSAPP_NUMBER && twilioAuth),
+    twilio: Boolean(
+      process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_WHATSAPP_NUMBER && twilioAuth,
+    ),
     elevenlabs: Boolean(process.env.ELEVENLABS_API_KEY && process.env.ELEVENLABS_VOICE_ID),
     redis: Boolean(process.env.REDIS_REST_URL && process.env.REDIS_REST_TOKEN),
     stt: Boolean(process.env.STT_API_KEY || process.env.OPENAI_API_KEY),
+    gbrain: Boolean(process.env.GBRAIN_BASE_URL),
+    // Guard is always present in-process — it has sane defaults even with no
+    // env vars. Report true unless someone explicitly disabled it.
+    guard: process.env.GUARD_DISABLED !== '1',
   }
 
   return NextResponse.json({ capabilities, checkedAt: new Date().toISOString() })

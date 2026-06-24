@@ -184,6 +184,7 @@ export default function Home() {
       </div>
 
       <nav className="fixed bottom-8 right-8 flex gap-6 z-50">
+        <a href="/dashboard" className="bg-white border border-gray-200 px-6 py-3 text-xs font-black hover:border-[#ff6b00] hover:text-[#ff6b00] transition-all shadow-xl">FLEET</a>
         <a href="/memory" className="bg-white border border-gray-200 px-6 py-3 text-xs font-black hover:border-[#ff6b00] hover:text-[#ff6b00] transition-all shadow-xl">MEMORY</a>
         <a href="/horizon" className="bg-[#1a1a1a] text-white px-6 py-3 text-xs font-black hover:bg-[#ff6b00] transition-all shadow-xl">HORIZON</a>
       </nav>

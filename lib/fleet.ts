@@ -1,6 +1,18 @@
-// The StudEx agent fleet — single source of truth for the support dashboard.
+// StudEx agent fleet — single source of truth for the dashboard.
+// The 6 capability flags drive the readiness lights; the FLEET array drives
+// the agent cards. Adding a new agent: append to FLEET. Adding a new capability:
+// extend the Capability union + CAPABILITY_LABELS + /api/status.
 
-export type Capability = 'llm' | 'pinecone' | 'twilio' | 'elevenlabs' | 'redis' | 'stt'
+export type Capability =
+  | 'llm'
+  | 'pinecone'
+  | 'twilio'
+  | 'elevenlabs'
+  | 'redis'
+  | 'stt'
+  | 'gbrain'
+  | 'guard'
+
 export type FleetStatus = Record<Capability, boolean>
 
 export type AgentKind = 'customer' | 'internal' | 'core'
@@ -13,10 +25,11 @@ export type Agent = {
   kind: AgentKind
   businesses: string[]
   channels: string[]
-  requires: Capability[] // capabilities that must be configured to be operational
-  external?: boolean // runs as a separate service / SaaS console, not this app
-  planned?: boolean // not built/deployed yet
+  requires: Capability[]
+  external?: boolean
+  planned?: boolean
   href?: string
+  skills?: string[] // .claude/skills/* this agent leans on
 }
 
 export const BUSINESSES: { id: string; name: string; blurb: string }[] = [
@@ -32,6 +45,8 @@ export const CAPABILITY_LABELS: Record<Capability, string> = {
   elevenlabs: 'ElevenLabs TTS',
   redis: 'Redis sessions',
   stt: 'Speech-to-text',
+  gbrain: 'GBrain (pgvector)',
+  guard: 'CashClaw Guard',
 }
 
 export const FLEET: Agent[] = [
@@ -42,8 +57,9 @@ export const FLEET: Agent[] = [
     kind: 'customer',
     businesses: ['meat', 'aas'],
     channels: ['Web', 'WhatsApp', 'Voice'],
-    requires: ['llm'],
+    requires: ['llm', 'guard'],
     href: '/sales',
+    skills: ['cashclaw-guard', 'gbrain-query', 'gstack-plan'],
   },
   {
     id: 'charlie',
@@ -72,7 +88,8 @@ export const FLEET: Agent[] = [
     kind: 'core',
     businesses: ['group'],
     channels: ['Internal'],
-    requires: ['llm'],
+    requires: ['llm', 'guard'],
+    skills: ['obsidian-markdown', 'defuddle', 'gstack-plan'],
   },
   {
     id: 'openclaw',
@@ -81,7 +98,8 @@ export const FLEET: Agent[] = [
     kind: 'core',
     businesses: ['group'],
     channels: ['Internal'],
-    requires: ['llm'],
+    requires: ['llm', 'guard'],
+    skills: ['gbrain-query', 'gstack-plan'],
   },
   {
     id: 'codex',
@@ -90,7 +108,8 @@ export const FLEET: Agent[] = [
     kind: 'core',
     businesses: ['group'],
     channels: ['Internal'],
-    requires: ['llm'],
+    requires: ['llm', 'guard'],
+    skills: ['gstack-plan'],
   },
   {
     id: 'openjarvis',

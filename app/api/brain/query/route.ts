@@ -1,40 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { pineconeQuery } from '@/lib/pinecone'
+import { queryBrain } from '@/lib/brain'
 
 export const runtime = 'nodejs'
 
-// Shared "second brain" retrieval for the swarm. Any agent (OpenJarvis, QwenPaw,
-// Charlie's Tools, ADA) queries the StudEx knowledge base — the Obsidian vault and
-// ingested meeting transcripts in the shared Pinecone namespace. Optional BRAIN_API_KEY
-// gates external agents via the X-Brain-Key header (or ?key=).
+// Unified Second Brain query — fans out across configured backends (Pinecone,
+// GBrain) via lib/brain.ts, applies Guard, returns synthesis + citations.
+// Optional BRAIN_API_KEY gates external agents via X-Brain-Key (or ?key=).
+
 function authorized(req: NextRequest, keyFromBody?: string): boolean {
   const expected = process.env.BRAIN_API_KEY
   if (!expected) return true
-  const provided = req.headers.get('x-brain-key') || req.nextUrl.searchParams.get('key') || keyFromBody
+  const provided =
+    req.headers.get('x-brain-key') ||
+    req.nextUrl.searchParams.get('key') ||
+    keyFromBody
   return provided === expected
 }
 
 function clampTopK(value: unknown): number {
-  return Math.min(Math.max(Number(value) || 5, 1), 20)
+  return Math.min(Math.max(Number(value) || 6, 1), 20)
 }
 
 export async function GET(req: NextRequest) {
-  const query = req.nextUrl.searchParams.get('q')?.trim()
   if (!authorized(req)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
-  if (!query) return NextResponse.json({ error: 'missing q' }, { status: 400 })
-
+  const q = req.nextUrl.searchParams.get('q')?.trim()
+  if (!q) return NextResponse.json({ error: 'q required' }, { status: 400 })
   const topK = clampTopK(req.nextUrl.searchParams.get('topK'))
-  const chunks = await pineconeQuery(query, topK).catch(() => [])
-  return NextResponse.json({ query, count: chunks.length, chunks })
+  const result = await queryBrain({ q, topK })
+  return NextResponse.json(result)
 }
 
 export async function POST(req: NextRequest) {
-  const body = await req.json().catch(() => ({}))
-  if (!authorized(req, body?.key)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
+  let body: { q?: string; query?: string; topK?: number; namespace?: string; graph?: boolean; key?: string } = {}
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'invalid json' }, { status: 400 })
+  }
+  if (!authorized(req, body.key)) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
+  const q = ((body.q ?? body.query) ?? '').toString().trim()
+  if (!q) return NextResponse.json({ error: 'q required' }, { status: 400 })
 
-  const query = (body?.query || body?.q || '').toString().trim()
-  if (!query) return NextResponse.json({ error: 'missing query' }, { status: 400 })
-
-  const chunks = await pineconeQuery(query, clampTopK(body?.topK)).catch(() => [])
-  return NextResponse.json({ query, count: chunks.length, chunks })
+  const result = await queryBrain({
+    q,
+    topK: clampTopK(body.topK),
+    namespace: body.namespace,
+    graph: body.graph,
+  })
+  return NextResponse.json(result)
 }
