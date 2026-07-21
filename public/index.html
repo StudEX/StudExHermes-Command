@@ -5,347 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AfricaBiz + Agentic Rise: Complete Strategy 2026-2027</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #059669;
-            --dark: #047857;
-            --light: #ecfdf5;
-            --surface: #f9fafb;
-            --text: #1a1a1a;
-            --text-muted: #6b7280;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: #f5f5f5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        header .subtitle {
-            font-size: 1.5em;
-            opacity: 0.95;
-            margin-bottom: 20px;
-        }
-
-        header .meta {
-            font-size: 0.95em;
-            opacity: 0.9;
-        }
-
-        .nav {
-            background: var(--surface);
-            padding: 20px 40px;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-
-        .nav a:hover {
-            background: var(--light);
-        }
-
-        .section {
-            padding: 60px 40px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .section:nth-child(odd) {
-            background: var(--surface);
-        }
-
-        h2 {
-            color: var(--primary);
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--primary);
-        }
-
-        h3 {
-            color: var(--dark);
-            font-size: 1.5em;
-            margin: 30px 0 15px 0;
-        }
-
-        p {
-            margin: 15px 0;
-            color: var(--text);
-            line-height: 1.8;
-        }
-
-        .highlight-box {
-            background: var(--light);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .highlight-box strong {
-            color: var(--primary);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 25px;
-            transition: all 0.2s;
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-
-        .card h4 {
-            color: var(--primary);
-            font-size: 1.2em;
-            margin-bottom: 15px;
-        }
-
-        .stat-box {
-            background: var(--light);
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            padding: 25px;
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: var(--dark);
-            font-size: 1em;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        th {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        tr:hover {
-            background: var(--surface);
-        }
-
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-
-        .timeline-item {
-            margin: 20px 0 20px 30px;
-            padding-left: 20px;
-            border-left: 3px solid var(--primary);
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -12px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .feature-list li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 20px 10px 20px 0;
-            transition: all 0.2s;
-        }
-
-        .cta-button:hover {
-            background: var(--dark);
-            transform: translateY(-2px);
-        }
-
-        .cta-button.secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .cta-button.secondary:hover {
-            background: var(--light);
-        }
-
-        footer {
-            background: var(--text);
-            color: white;
-            padding: 40px;
-            text-align: center;
-        }
-
-        footer p {
-            color: #d1d5db;
-            margin: 10px 0;
-        }
-
-        .section-divider {
-            text-align: center;
-            margin: 40px 0;
-            color: var(--primary);
-            font-size: 1.5em;
-        }
-
-        code {
-            background: var(--surface);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
-
-        pre {
-            background: var(--surface);
-            padding: 20px;
-            border-radius: 4px;
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
-        .metric-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .metric-item {
-            background: var(--light);
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .metric-item strong {
-            color: var(--primary);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        @media print {
-            .nav {
-                position: static;
-            }
-            .section {
-                page-break-inside: avoid;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            .section {
-                padding: 40px 20px;
-            }
-            .nav {
-                flex-direction: column;
-                padding: 10px 20px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #059669; --dark: #047857; --light: #ecfdf5; --surface: #f9fafb; --text: #1a1a1a; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--text); background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%); color: white; padding: 60px 40px; text-align: center; }
+        header h1 { font-size: 3em; margin-bottom: 10px; }
+        header .subtitle { font-size: 1.5em; opacity: 0.95; margin-bottom: 20px; }
+        .nav { background: var(--surface); padding: 20px 40px; display: flex; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+        .nav a { color: var(--primary); text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 4px; transition: all 0.2s; }
+        .nav a:hover { background: var(--light); }
+        .section { padding: 60px 40px; border-bottom: 1px solid #e5e7eb; }
+        .section:nth-child(odd) { background: var(--surface); }
+        h2 { color: var(--primary); font-size: 2.2em; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 3px solid var(--primary); }
+        h3 { color: var(--dark); font-size: 1.5em; margin: 30px 0 15px 0; }
+        p { margin: 15px 0; color: var(--text); line-height: 1.8; }
+        .highlight-box { background: var(--light); border-left: 4px solid var(--primary); padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 25px; transition: all 0.2s; }
+        .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .card h4 { color: var(--primary); font-size: 1.2em; margin-bottom: 15px; }
+        .stat-box { background: var(--light); border: 2px solid var(--primary); border-radius: 8px; padding: 25px; text-align: center; margin: 15px 0; }
+        .stat-number { font-size: 2.5em; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th { background: var(--primary); color: white; padding: 15px; text-align: left; font-weight: 600; }
+        td { padding: 12px 15px; border-bottom: 1px solid #e5e7eb; }
+        .timeline { position: relative; margin: 30px 0; }
+        .timeline-item { margin: 20px 0 20px 30px; padding-left: 20px; border-left: 3px solid var(--primary); position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -12px; top: 5px; width: 15px; height: 15px; background: var(--primary); border-radius: 50%; }
+        .feature-list { list-style: none; margin: 20px 0; }
+        .feature-list li { padding: 10px 0; padding-left: 30px; position: relative; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: bold; font-size: 1.2em; }
+        .escalator { background: var(--light); padding: 30px; border-radius: 8px; margin: 20px 0; border-left: 4px solid var(--primary); }
+        .escalator-item { margin: 15px 0; padding: 15px; background: white; border-radius: 4px; border-left: 3px solid var(--primary); }
+        footer { background: var(--text); color: white; padding: 40px; text-align: center; }
+        footer p { color: #d1d5db; margin: 10px 0; }
+        .metric-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .metric-item { background: var(--light); padding: 15px; border-radius: 6px; border-left: 4px solid var(--primary); }
+        .metric-item strong { color: var(--primary); display: block; margin-bottom: 5px; }
+        @media (max-width: 768px) { header h1 { font-size: 2em; } .section { padding: 40px 20px; } }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
         <header>
             <h1>AfricaBiz + Agentic Rise</h1>
             <div class="subtitle">Complete Strategy 2026-2027</div>
@@ -355,630 +57,379 @@
             </div>
         </header>
 
-        <!-- NAVIGATION -->
         <div class="nav">
-            <a href="#vision">Vision</a>
-            <a href="#africabiz">AfricaBiz Core</a>
-            <a href="#agentic">Agentic Rise</a>
-            <a href="#integration">Integration</a>
-            <a href="#chris">Chris Peralta</a>
-            <a href="#investment">Investment</a>
-            <a href="#timeline">Timeline</a>
-            <a href="#contact">Contact</a>
+            <a href="#investment">Investment & Pricing</a>
+            <a href="#machines">Virtual Machines</a>
+            <a href="#tools">Tool Costs</a>
+            <a href="#russia">Russia Operations</a>
+            <a href="#contact">Contacts</a>
         </div>
 
-        <!-- EXECUTIVE SUMMARY -->
-        <section class="section" id="vision">
-            <h2>Executive Vision</h2>
-            <p style="font-size: 1.1em; margin-bottom: 30px;">We're building a <strong>three-layer ecosystem</strong> that transforms how technology and manufacturing happens in emerging markets. Not API consumers—architects of their digital future.</p>
+        <section class="section" id="investment">
+            <h2>AfricaBiz Investment & Pricing Structure</h2>
 
+            <h3>Setup & Monthly Costs</h3>
             <div class="highlight-box">
-                <strong>Core Promise:</strong> Empowering emerging markets to build, own, and manufacture their own AI infrastructure. Revenue and equity stay local, with global partnerships amplifying impact.
-            </div>
-
-            <h3>Three Strategic Layers</h3>
-            <div class="grid">
-                <div class="card">
-                    <h4>Layer 1: Innovation Pipeline</h4>
-                    <p>Silicon Valley HQ + Chris Peralta network brings AI startups, venture capital, and mentorship to emerging markets.</p>
-                    <ul class="feature-list">
-                        <li>500+ AI founders engaged</li>
-                        <li>$50M+ capital raised Y1</li>
-                        <li>Global investor network</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Layer 2: AfricaBiz Infrastructure</h4>
-                    <p>Enterprise infrastructure, consulting, government relationships, and AI research labs serving 50+ partners.</p>
-                    <ul class="feature-list">
-                        <li>Dedicated consulting support</li>
-                        <li>Virtual machines & tools</li>
-                        <li>Government partnerships</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Layer 3: Manufacturing + Equity</h4>
-                    <p>Distributed manufacturing hubs where partners own equity and capture manufacturing upside.</p>
-                    <ul class="feature-list">
-                        <li>5 manufacturing hubs</li>
-                        <li>Co-investment model</li>
-                        <li>$21.8M Y1 revenue</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="stat-box">
-                <div class="stat-number">363%</div>
-                <div class="stat-label">Year 1 ROI for Active Partners</div>
-            </div>
-        </section>
-
-        <!-- AFRICABIZ CORE -->
-        <section class="section" id="africabiz">
-            <h2>AfricaBiz: Infrastructure & Consulting Core</h2>
-
-            <h3>What AfricaBiz Provides</h3>
-            <div class="grid">
-                <div class="card">
-                    <h4>Virtual Infrastructure</h4>
-                    <p>3 Tier-2 machines with full platform integration</p>
-                    <ul class="feature-list">
-                        <li>AfricaBiz Operations (4vCPU, 16GB)</li>
-                        <li>Global Barcodes & Logistics</li>
-                        <li>AI Female Union & Research</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Consulting Services</h4>
-                    <p>Dedicated partner success manager</p>
-                    <ul class="feature-list">
-                        <li>30 hours/month consultation</li>
-                        <li>Bi-weekly strategy sessions</li>
-                        <li>Quarterly executive reviews</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Government Relations</h4>
-                    <p>Ministry partnerships & liaisons</p>
-                    <ul class="feature-list">
-                        <li>Health ministry access</li>
-                        <li>Identity verification systems</li>
-                        <li>Trade & industrial partnerships</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Research Lab Access</h4>
-                    <p>Cape Town AI Research Lab (8,000 sqm)</p>
-                    <ul class="feature-list">
-                        <li>40 H100 GPU servers</li>
-                        <li>Conference center (400 seats)</li>
-                        <li>Training programs</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Training & Certification</h4>
-                    <p>AI education & team development</p>
-                    <ul class="feature-list">
-                        <li>16-hour onboarding</li>
-                        <li>3-tier certification programs</li>
-                        <li>Executive briefings</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4>Community Access</h4>
-                    <p>500+ AI startup ecosystem</p>
-                    <ul class="feature-list">
-                        <li>Monday coaching sessions</li>
-                        <li>Friday deep dives</li>
-                        <li>Partnership opportunities</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3>AfricaBiz Pricing & Terms</h3>
-            <div class="highlight-box">
-                <strong>One-Time Setup: $2,500</strong>
-                <p style="margin-top: 10px;">Includes machine provisioning, 16-hour training, onboarding, African strategy workshop, ecosystem integration</p>
+                <strong>One-Time Setup Fee: $7,500</strong>
+                <p style="margin-top: 10px;">Complete provisioning for 3 virtual machines with full integration and onboarding</p>
             </div>
 
             <div class="highlight-box">
-                <strong>Monthly Consulting: R200,000 (~$11,100 USD)</strong>
-                <p style="margin-top: 10px;">Dedicated partner success manager, 30 hours consultation, bi-weekly sessions, priority support</p>
-            </div>
-
-            <div class="highlight-box">
-                <strong>Monthly VMs: $6,000 (3 Tier-2 machines)</strong>
-                <p style="margin-top: 10px;">Standard pricing for 3 machines: $7,500/month. Your special rate: 20% savings</p>
+                <strong>Monthly Operations: $5,000</strong>
+                <p style="margin-top: 10px;">Two machines for AfricaBiz infrastructure + full support, tools, and consulting</p>
             </div>
 
             <table>
                 <tr>
-                    <th>Category</th>
-                    <th>Cost</th>
+                    <th>Cost Category</th>
+                    <th>Amount</th>
                     <th>Details</th>
                 </tr>
                 <tr>
-                    <td>VM Setup (one-time)</td>
-                    <td>$2,500</td>
-                    <td>Machine provisioning + onboarding</td>
+                    <td>One-Time Setup (3 machines)</td>
+                    <td>$7,500</td>
+                    <td>Provisioning, integration, onboarding included</td>
                 </tr>
                 <tr>
-                    <td>VMs Monthly</td>
-                    <td>$6,000</td>
-                    <td>3 Tier-2 machines ($2,000 each)</td>
+                    <td>Monthly Infrastructure</td>
+                    <td>$5,000</td>
+                    <td>2 machines + tools + support</td>
                 </tr>
                 <tr>
-                    <td>Consulting Monthly</td>
-                    <td>R200,000</td>
-                    <td>~$11,100 USD for 30 hours</td>
+                    <td>Monthly Tools & Services</td>
+                    <td>$1,440</td>
+                    <td>Subscription tools (detailed below)</td>
+                </tr>
+                <tr style="background: var(--light); font-weight: bold;">
+                    <td>Total Monthly Investment</td>
+                    <td>$6,440</td>
+                    <td>Infrastructure + Tools</td>
                 </tr>
                 <tr style="background: var(--light); font-weight: bold;">
                     <td>Year 1 Total</td>
-                    <td colspan="2">~$213,700 USD investment</td>
+                    <td>$84,380</td>
+                    <td>Setup + 12 months operations</td>
                 </tr>
             </table>
+
+            <h3>Value Proposition</h3>
+            <div class="stat-box">
+                <div class="stat-number">$30,000/month</div>
+                <div class="stat-label">Market value of 3 enterprise machines</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$6,440/month</div>
+                <div class="stat-label">Your cost (79% savings)</div>
+            </div>
         </section>
 
-        <!-- AGENTIC RISE -->
-        <section class="section" id="agentic">
-            <h2>Agentic Rise: Global AI Startup Ecosystem</h2>
+        <section class="section" id="machines">
+            <h2>Three Virtual Machines Escalator</h2>
 
-            <h3>What Is Agentic Rise?</h3>
-            <p>A movement to build sovereign, locally-manufactured AI infrastructure across emerging markets. Rather than exporting solutions from Silicon Valley, we're building a distributed manufacturing and innovation ecosystem where local partners become architects and manufacturers of their own AI future.</p>
-
-            <h3>The Startup Community</h3>
-            <p><strong>500+ AI founders</strong> engaged through weekly coaching sessions, creating a global network building on Agentic Rise infrastructure.</p>
-
-            <div class="grid">
-                <div class="card">
-                    <h4>Monday Sessions (09:00 CAT)</h4>
-                    <p>90-minute synchronous coaching with 50-100 founders</p>
-                    <ul class="feature-list">
-                        <li>Agent briefings</li>
-                        <li>Founder speed rounds</li>
-                        <li>Technical deep dives</li>
-                        <li>Networking</li>
+            <div class="escalator">
+                <div class="escalator-item">
+                    <h4>Tier 1: AfricaBiz Operations Hub</h4>
+                    <p><strong>Monthly Cost:</strong> $2,000 | <strong>Market Value:</strong> $10,000</p>
+                    <p>Pharmaceutical distribution, customer relationships, daily operations coordination</p>
+                    <ul class="feature-list" style="margin-left: 20px;">
+                        <li>Salesforce CRM (enterprise-level)</li>
+                        <li>Email & communication integration</li>
+                        <li>Google Sheets unlimited</li>
+                        <li>Real-time analytics & reporting</li>
+                        <li>40+ integrated tools</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h4>Friday Sessions (16:00 CAT)</h4>
-                    <p>90-minute deep dives with 20-30 founders per cohort</p>
-                    <ul class="feature-list">
-                        <li>Problem solving</li>
-                        <li>Expert coaching</li>
-                        <li>Peer mentoring</li>
-                        <li>Action planning</li>
+
+                <div class="escalator-item">
+                    <h4>Tier 2: Global Markets Infrastructure</h4>
+                    <p><strong>Monthly Cost:</strong> $2,500 | <strong>Market Value:</strong> $10,000</p>
+                    <p>International expansion, supply chain, distribution partners, regional operations</p>
+                    <ul class="feature-list" style="margin-left: 20px;">
+                        <li>Warehouse management systems</li>
+                        <li>Google Maps API (unlimited)</li>
+                        <li>Real-time tracking & alerts</li>
+                        <li>Supply chain analytics</li>
+                        <li>Multi-location support</li>
+                    </ul>
+                </div>
+
+                <div class="escalator-item">
+                    <h4>Tier 3: Agentic Rise & Women's AI Union</h4>
+                    <p><strong>Monthly Cost:</strong> $1,500 | <strong>Market Value:</strong> $10,000</p>
+                    <p>AI research, women's entrepreneurship, community building, international business</p>
+                    <ul class="feature-list" style="margin-left: 20px;">
+                        <li>Notion knowledge base</li>
+                        <li>Google Workspace collaboration</li>
+                        <li>GitHub API (development)</li>
+                        <li>Telegram community management</li>
+                        <li>Advanced analytics & AI tools</li>
                     </ul>
                 </div>
             </div>
 
-            <h3>Manufacturing Hubs</h3>
-            <p>Five distributed manufacturing facilities building AI hardware and solutions locally:</p>
+            <p style="margin-top: 30px; font-size: 1.1em; font-weight: bold;">
+                <strong>Total: 3 machines worth $30,000/month @ market rates<br>Your investment: $6,000/month infrastructure</strong>
+            </p>
+        </section>
 
-            <table>
-                <tr>
-                    <th>Hub</th>
-                    <th>Timeline</th>
-                    <th>Capacity</th>
-                    <th>Focus</th>
-                </tr>
-                <tr>
-                    <td><strong>Cape Town</strong></td>
-                    <td>Sept 2026</td>
-                    <td>50 units/month</td>
-                    <td>Primary Africa hub, pharma systems</td>
-                </tr>
-                <tr>
-                    <td><strong>Nigeria</strong></td>
-                    <td>Sept 2026</td>
-                    <td>40 units/month</td>
-                    <td>West Africa operations</td>
-                </tr>
-                <tr>
-                    <td><strong>India</strong></td>
-                    <td>Q4 2026</td>
-                    <td>60 units/month</td>
-                    <td>South Asia distribution</td>
-                </tr>
-                <tr>
-                    <td><strong>Moscow</strong></td>
-                    <td>Aug 2026</td>
-                    <td>30 units/month</td>
-                    <td>Pharma & research center</td>
-                </tr>
-                <tr>
-                    <td><strong>Silicon Valley</strong></td>
-                    <td>Q1 2027</td>
-                    <td>70 units/month</td>
-                    <td>Innovation center</td>
-                </tr>
-            </table>
+        <section class="section" id="tools">
+            <h2>Tool Costs Breakdown</h2>
+            <p>Monthly subscription services included in your $1,440 tools budget:</p>
 
-            <h3>Co-Investment Model</h3>
-            <div class="highlight-box">
-                <strong>You don't buy AI infrastructure—you co-own manufacturing facilities.</strong>
-                <p style="margin-top: 15px;">Each partner invests $250K-$500K for equity stake in regional hub. Revenue from manufacturing operations flows to equity holders as dividends.</p>
-            </div>
-
-            <div class="metric-row">
-                <div class="metric-item">
-                    <strong>Investment</strong>
-                    $250K-$500K equity stake
-                </div>
-                <div class="metric-item">
-                    <strong>Ownership</strong>
-                    Co-own manufacturing hub with other partners
-                </div>
-                <div class="metric-item">
-                    <strong>Returns</strong>
-                    Dividend distributions quarterly
-                </div>
-            </div>
-
-            <h3>Agentic Rise Revenue Model</h3>
-            <table>
+            <table style="font-size: 0.9em;">
                 <tr>
-                    <th>Revenue Stream</th>
-                    <th>Y1 Target</th>
-                    <th>Year 2-3</th>
+                    <th>Tool/Service</th>
+                    <th>Cost</th>
+                    <th>Benefit & Business Value</th>
                 </tr>
                 <tr>
-                    <td>Manufacturing</td>
-                    <td>$10M</td>
-                    <td>$30M+</td>
+                    <td><strong>Bloatator</strong></td>
+                    <td>$20</td>
+                    <td>Automates repetitive tasks across your 3 machines. Saves 5+ hours/week per team member by eliminating manual data entry and routine operations. Integrates with all 60+ tools for seamless automation.</td>
                 </tr>
                 <tr>
-                    <td>Consulting</td>
-                    <td>$6.6M</td>
-                    <td>$20M+</td>
+                    <td><strong>Agent Mail</strong></td>
+                    <td>$20</td>
+                    <td>AI-powered email management & auto-responses for customer service. Instantly categorizes and routes incoming messages. Reduces email response time by 70% while improving customer satisfaction.</td>
                 </tr>
                 <tr>
-                    <td>Startup Ecosystem</td>
-                    <td>$1.5M</td>
-                    <td>$10M+</td>
+                    <td><strong>ChatGPT Plus</strong></td>
+                    <td>$100</td>
+                    <td>Advanced AI for content creation, market analysis, and business strategy. Generates reports, marketing copy, and proposals instantly. Cuts content development time from days to hours.</td>
                 </tr>
                 <tr>
-                    <td>Licensing & IP</td>
-                    <td>$1.2M</td>
-                    <td>$5M+</td>
+                    <td><strong>Claude API</strong></td>
+                    <td>$100</td>
+                    <td>Enterprise-grade AI for complex reasoning, data analysis, and decision support. Handles pharmaceutical compliance, regulatory documents, and strategic analysis. Powers your 3 virtual machines' intelligence layer.</td>
                 </tr>
                 <tr>
-                    <td>Government Contracts</td>
-                    <td>$2.5M</td>
-                    <td>$8M+</td>
+                    <td><strong>Free Pick</strong></td>
+                    <td>$30</td>
+                    <td>Real-time data visualization & dashboard creation. Transforms raw data into actionable insights. Enables executives to make decisions based on live metrics instead of outdated reports.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cursor IDE</strong></td>
+                    <td>$20</td>
+                    <td>AI-assisted coding environment for your development team. Autocomplete, debugging, and code generation at scale. Accelerates software development cycles by 40%.</td>
+                </tr>
+                <tr>
+                    <td><strong>Conductor</strong></td>
+                    <td>$20</td>
+                    <td>Orchestrates workflows across your entire operation. Connects 60+ tools into unified automation pipelines. Eliminates manual coordination between teams and systems.</td>
+                </tr>
+                <tr>
+                    <td><strong>Google Anti-Gravity</strong></td>
+                    <td>$100</td>
+                    <td>Advanced cloud analytics for processing massive datasets across all 3 machines. Real-time insights on supply chain, operations, and customer behavior. Enables predictive decision-making.</td>
+                </tr>
+                <tr>
+                    <td><strong>Arc Ads</strong></td>
+                    <td>$250</td>
+                    <td>Marketing automation across Facebook, Instagram, Google, TikTok. Manages campaigns for your AfricaBiz operations and women's AI union initiatives. Tracks ROI on every marketing dollar spent.</td>
+                </tr>
+                <tr>
+                    <td><strong>Slack Pro</strong></td>
+                    <td>$150</td>
+                    <td>Central hub for team communication across Africa, Russia, and Silicon Valley. Integrates with all tools for real-time notifications and updates. Keeps distributed teams synchronized.</td>
+                </tr>
+                <tr>
+                    <td><strong>Notion Pro</strong></td>
+                    <td>$100</td>
+                    <td>Knowledge management system for your entire organization. Documents procedures, stores institutional knowledge, manages projects. Single source of truth for all company information.</td>
+                </tr>
+                <tr>
+                    <td><strong>Asana Premium</strong></td>
+                    <td>$120</td>
+                    <td>Project tracking for all 3 machine operations. Visualizes dependencies, timelines, and resource allocation. Ensures projects complete on schedule and within budget.</td>
+                </tr>
+                <tr>
+                    <td><strong>HubSpot Sales Hub</strong></td>
+                    <td>$200</td>
+                    <td>CRM for managing sales pipeline and customer relationships. Tracks every lead through to conversion. Provides visibility on sales metrics and team performance.</td>
+                </tr>
+                <tr>
+                    <td><strong>Zapier Pro</strong></td>
+                    <td>$200</td>
+                    <td>Connects 5,000+ apps without custom coding. Automates data flow between your tools. Eliminates manual exports/imports and keeps systems synchronized in real-time.</td>
+                </tr>
+                <tr>
+                    <td><strong>Typeform Pro</strong></td>
+                    <td>$80</td>
+                    <td>Collects customer feedback and market research at scale. AI-powered insights from survey responses. Informs product decisions and identifies market opportunities.</td>
+                </tr>
+                <tr>
+                    <td><strong>Calendly Premium</strong></td>
+                    <td>$125</td>
+                    <td>Eliminates scheduling conflicts for distributed teams across timezones. Auto-syncs with Slack/email. Saves hours per week on meeting coordination.</td>
+                </tr>
+                <tr>
+                    <td><strong>Figma Team</strong></td>
+                    <td>$150</td>
+                    <td>Collaborative design for mobile apps, dashboards, and user interfaces. Real-time co-editing with teams in multiple countries. Speeds up design iteration and feedback.</td>
+                </tr>
+                <tr>
+                    <td><strong>GitHub Enterprise</strong></td>
+                    <td>$100</td>
+                    <td>Version control for all code across your 3 machines. Secure collaboration for engineering teams. Tracks changes, manages releases, and enables code reviews.</td>
+                </tr>
+                <tr>
+                    <td><strong>Stripe Business</strong></td>
+                    <td>$80</td>
+                    <td>Payment processing for customer transactions and affiliate commissions. Real-time reconciliation and reporting. Enables international payments for partners across Africa and Russia.</td>
+                </tr>
+                <tr>
+                    <td><strong>Intercom Pro</strong></td>
+                    <td>$135</td>
+                    <td>Customer support chatbots and live messaging. AI automatically answers 60% of questions. Your team focuses on complex issues while maintaining 24/7 availability.</td>
                 </tr>
                 <tr style="background: var(--light); font-weight: bold;">
-                    <td>TOTAL Y1</td>
-                    <td>$21.8M</td>
-                    <td>$73M+</td>
+                    <td><strong>TOTAL MONTHLY TOOLS</strong></td>
+                    <td><strong>$1,440</strong></td>
+                    <td><strong>20 professional tools × combined value of $10K+/month</strong></td>
                 </tr>
             </table>
-        </section>
 
-        <!-- INTEGRATION -->
-        <section class="section" id="integration">
-            <h2>How They Work Together</h2>
-
-            <h3>The Ecosystem Loop</h3>
-            <p>AfricaBiz + Agentic Rise create a self-reinforcing flywheel:</p>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>Startup discovers Agentic Rise</strong> → Joins Monday/Friday coaching community
-                </div>
-                <div class="timeline-item">
-                    <strong>Startup identifies AI infrastructure need</strong> → AfricaBiz provides consulting + VMs
-                </div>
-                <div class="timeline-item">
-                    <strong>Startup grows, scales production</strong> → Needs manufacturing capability
-                </div>
-                <div class="timeline-item">
-                    <strong>Startup co-invests in manufacturing hub</strong> → Becomes equity partner
-                </div>
-                <div class="timeline-item">
-                    <strong>Startup scales regionally</strong> → Refers other founders, earns commissions
-                </div>
-                <div class="timeline-item">
-                    <strong>Startup becomes manufacturing partner</strong> → Dividend distributions + equity upside
-                </div>
-            </div>
-
-            <h3>Value Capture for AfricaBiz Partners</h3>
             <div class="highlight-box">
-                <strong>40% Revenue Share:</strong> All consulting and VM services revenue split 40% to you / 60% to StudEx
-            </div>
-            <div class="highlight-box">
-                <strong>Manufacturing Equity:</strong> Co-own regional hubs, receive quarterly dividend distributions
-            </div>
-            <div class="highlight-box">
-                <strong>Startup Commissions:</strong> 15% lifetime commission on startups you refer to ecosystem
-            </div>
-            <div class="highlight-box">
-                <strong>Government Contracts:</strong> 35% markup on services delivered through government relationships
+                <strong>Why $1,440/month in tools?</strong>
+                <p style="margin-top: 10px;">These 20+ tools represent enterprise-grade subscriptions for automation, AI, collaboration, CRM, analytics, and development. Individual costs would exceed $3,000/month. We negotiate volume licensing to provide them at $1,440, passing savings to you.</p>
             </div>
         </section>
 
-        <!-- CHRIS PERALTA -->
-        <section class="section" id="chris">
-            <h2>Chris Peralta: Global Expansion Leader</h2>
+        <section class="section" id="russia">
+            <h2>Russia Operations: August 20-27, 2026</h2>
 
+            <h3>Strategic Partnership Visit</h3>
+            <p><strong>Lead by Natalia:</strong> International Business Architect & COO</p>
+            <p>Focus: Women's AI Union, International Business, Coffee Industry Partnerships</p>
+
+            <h3>Partner Meetings</h3>
             <div class="grid">
-                <div style="grid-column: 1 / -1;">
-                    <h3>Who Is Chris Peralta?</h3>
-                    <p><strong>Co-Founder, Silicon Valley HQ</strong> | Global Technology & Startup Strategy Leader | 20+ years in venture capital and AI</p>
-                    <p style="margin-top: 15px;">Chris brings Silicon Valley credibility, AI startup network (500+ founders), and institutional investor relationships (200+ VCs) to Agentic Rise. He's the bridge between innovation and manufacturing.</p>
+                <div class="card">
+                    <h4>Art Technologies</h4>
+                    <p>AI-powered creative systems & automation partnerships</p>
+                    <ul class="feature-list">
+                        <li>Technology integration planning</li>
+                        <li>Women's AI initiative alignment</li>
+                        <li>Co-development opportunities</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Pharma Centers</h4>
+                    <p>Pharmaceutical research & distribution systems</p>
+                    <ul class="feature-list">
+                        <li>Cold chain automation</li>
+                        <li>Government compliance solutions</li>
+                        <li>Supply chain optimization</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>NTech Labs</h4>
+                    <p>Government technology & identity solutions</p>
+                    <ul class="feature-list">
+                        <li>National tech strategy alignment</li>
+                        <li>Regulatory framework discussions</li>
+                        <li>Manufacturing partnerships</li>
+                    </ul>
                 </div>
             </div>
 
-            <h3>Chris's Weekly Commitment</h3>
-            <div class="metric-row">
-                <div class="metric-item">
-                    <strong>Monday 09:00 CAT (05:00 PST)</strong>
-                    Agent & OS sync, startup ecosystem review, capital pipeline
-                </div>
-                <div class="metric-item">
-                    <strong>Friday 16:00 CAT (08:00 PST)</strong>
-                    Deep dive on innovation, partnership opportunities, investment decisions
-                </div>
-                <div class="metric-item">
-                    <strong>Monthly Gatherings</strong>
-                    International meetings with all regional leads
-                </div>
+            <h3>Women's AI Union Initiative</h3>
+            <div class="highlight-box">
+                <strong>Led by Natalia</strong>
+                <p style="margin-top: 10px;">Building women's entrepreneurship in AI with focus on international business partnerships, coffee trade optimization, and cross-border commerce. Russian partners will serve as hub for Eastern European expansion.</p>
             </div>
 
-            <h3>Quarterly Objectives</h3>
+            <h3>Key Outcomes</h3>
             <ul class="feature-list">
-                <li>Identify 20+ AI startups for African market adaptation</li>
-                <li>Facilitate 5+ co-investment discussions</li>
-                <li>Coach 50+ founders in AI startup community</li>
-                <li>Drive 3+ new enterprise partnerships</li>
-                <li>Secure $5M+ in co-investment commitments</li>
+                <li>Formalize 3 technology partnerships</li>
+                <li>Establish women's AI network in Russia & Eastern Europe</li>
+                <li>Identify co-investment manufacturing opportunities</li>
+                <li>Build international business protocols</li>
+                <li>Create pipeline for 20+ new startups</li>
             </ul>
+        </section>
 
-            <div class="highlight-box">
-                <strong>Why Chris Matters:</strong> He makes the narrative credible to Silicon Valley VCs, African entrepreneurs, and government partners. He's proof that this isn't a one-way extraction model—it's genuine partnership.
+        <section class="section" id="contact">
+            <h2>Leadership Team</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>Natalia</h4>
+                    <p><strong>International Business Architect & Chief Operating Officer</strong></p>
+                    <p style="margin-top: 10px;">
+                        Leads all international operations, women's AI union development, and strategic partnerships across Africa, Russia, and emerging markets. Oversees daily execution of all three virtual machine operations and government relationships.
+                    </p>
+                    <ul class="feature-list" style="margin-top: 10px;">
+                        <li>Russia operations (Aug 20-27)</li>
+                        <li>Women's AI Union founder</li>
+                        <li>International business strategy</li>
+                        <li>Day-to-day operations management</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Chris Peralta</h4>
+                    <p><strong>Global Expansion Lead & Venture Partner</strong></p>
+                    <p style="margin-top: 10px;">
+                        Silicon Valley HQ co-founder bringing 500+ AI founders network, $50M+ capital access, and institutional investor relationships. Oversees Agentic Rise ecosystem growth and manufacturing hub development.
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>Finance & Partnerships</h4>
+                    <p><strong>t.ramaphosa@studex.dev</strong></p>
+                    <p style="margin-top: 10px;">
+                        Manages partnership agreements, financial terms, government contracts, and executive-level coordination.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- INVESTMENT & RETURNS -->
-        <section class="section" id="investment">
-            <h2>Investment & Financial Returns</h2>
+        <section class="section">
+            <h2>Summary: Your Year 1 Investment</h2>
 
-            <h3>Year 1 Investment Breakdown</h3>
-            <table>
-                <tr>
-                    <th>Category</th>
-                    <th>Setup Cost</th>
-                    <th>Monthly</th>
-                    <th>Annual</th>
-                </tr>
-                <tr>
-                    <td>AfricaBiz VMs</td>
-                    <td>$2,500</td>
-                    <td>$6,000</td>
-                    <td>$72,000</td>
-                </tr>
-                <tr>
-                    <td>Consulting</td>
-                    <td>—</td>
-                    <td>R200,000</td>
-                    <td>~$133,200</td>
-                </tr>
-                <tr style="background: var(--light); font-weight: bold;">
-                    <td>TOTAL Y1 INVESTMENT</td>
-                    <td colspan="3">~$213,700 USD</td>
-                </tr>
-            </table>
+            <div class="metric-row">
+                <div class="metric-item">
+                    <strong>Setup Fee</strong>
+                    $7,500 (one-time)
+                </div>
+                <div class="metric-item">
+                    <strong>Monthly Cost</strong>
+                    $6,440 (infrastructure + tools)
+                </div>
+                <div class="metric-item">
+                    <strong>Year 1 Total</strong>
+                    $84,380 (setup + 12 months)
+                </div>
+                <div class="metric-item">
+                    <strong>Market Value</strong>
+                    $370,000+ (machines + tools)
+                </div>
+            </div>
 
-            <h3>Year 1 Revenue Returns</h3>
+            <div class="stat-box">
+                <div class="stat-number">79%</div>
+                <div class="stat-label">Savings vs market rates</div>
+            </div>
+
             <div class="highlight-box">
-                <strong>Direct Returns:</strong>
+                <strong>What You Get:</strong>
                 <ul class="feature-list" style="margin-left: 20px;">
-                    <li>40% revenue share on consulting delivered to other clients: ~$1M</li>
-                    <li>Manufacturing hub equity dividends (if investing $300K): ~$100K</li>
-                    <li>Startup referral commissions (15% on closed deals): ~$50K</li>
-                    <li>Government contract markups (35%): ~$200K</li>
+                    <li>3 enterprise virtual machines</li>
+                    <li>20+ professional software tools</li>
+                    <li>24/7 technical support</li>
+                    <li>Natalia's full-time operations leadership</li>
+                    <li>Access to 500+ AI founder community</li>
+                    <li>Manufacturing hub co-investment opportunities</li>
+                    <li>Government partnership facilitation</li>
+                    <li>Women's AI Union leadership</li>
                 </ul>
             </div>
-
-            <div class="stat-box">
-                <div class="stat-number">$1.35M</div>
-                <div class="stat-label">Projected Year 1 Revenue for Active Partner</div>
-            </div>
-
-            <div class="stat-box">
-                <div class="stat-number">363%</div>
-                <div class="stat-label">Year 1 ROI ($213.7K investment → $1.35M return)</div>
-            </div>
-
-            <h3>Compounding Growth (Years 2-3)</h3>
-            <p>As the ecosystem scales:</p>
-            <ul class="feature-list">
-                <li><strong>Year 2:</strong> 5 manufacturing hubs operational, 50+ enterprise partners → $500K+ monthly revenue</li>
-                <li><strong>Year 3:</strong> 15+ manufacturing hubs, 100+ partners → $1.5M+ monthly revenue</li>
-                <li><strong>Equity upside:</strong> Manufacturing hub equity values compound as production scales and new hubs open</li>
-            </ul>
         </section>
 
-        <!-- TIMELINE & MILESTONES -->
-        <section class="section" id="timeline">
-            <h2>Implementation Timeline</h2>
-
-            <h3>Phase 1: Foundation (August 1-31, 2026)</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>Week 1-2:</strong> Office launches in Cape Town and Johannesburg operational; Moscow combined office ready
-                </div>
-                <div class="timeline-item">
-                    <strong>Week 3:</strong> Infrastructure testing; first coaching session preparations
-                </div>
-                <div class="timeline-item">
-                    <strong>Week 4:</strong> South Africa mobile data center construction underway; partner co-investment confirmations
-                </div>
-            </div>
-
-            <h3>Phase 2: Launch (September 2026)</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>Sept 1-15:</strong> South Africa data center operational; first 50 founders in community; Nigeria site finalized
-                </div>
-                <div class="timeline-item">
-                    <strong>Sept 21-23:</strong> Cape Town Tech Conference (800+ attendees); research lab grand opening; data center showcase
-                </div>
-                <div class="timeline-item">
-                    <strong>Sept 30:</strong> 15+ enterprise partnerships; $1.5M revenue run-rate; Nigeria data center online
-                </div>
-            </div>
-
-            <h3>Phase 3: Growth (October 2026+)</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>October 1:</strong> Full operations across 3 data centers and 2 offices
-                </div>
-                <div class="timeline-item">
-                    <strong>October 31:</strong> 35+ enterprise partnerships; $350K+ MRR; manufacturing hubs at 60% capacity
-                </div>
-                <div class="timeline-item">
-                    <strong>Dec 31:</strong> 50+ partnerships; $550K+ MRR; 200+ VM customers; Q4 revenue targets met
-                </div>
-            </div>
-
-            <h3>Critical Decisions Required</h3>
-            <div class="metric-row">
-                <div class="metric-item">
-                    <strong>By July 24:</strong>
-                    Strategy review & questions finalized
-                </div>
-                <div class="metric-item">
-                    <strong>By July 27:</strong>
-                    Contract negotiation begins
-                </div>
-                <div class="metric-item">
-                    <strong>By July 31:</strong>
-                    Partnership agreement signed
-                </div>
-                <div class="metric-item">
-                    <strong>Aug 1:</strong>
-                    Go live
-                </div>
-            </div>
-        </section>
-
-        <!-- TECHNOLOGY & AUTOMATION -->
-        <section class="section">
-            <h2>Automation & Skills Integration</h2>
-
-            <h3>Obsidian Vault Second Brain</h3>
-            <p>All operations coordinated through an integrated knowledge system that auto-runs sophisticated skills:</p>
-
-            <table>
-                <tr>
-                    <th>Skill</th>
-                    <th>Function</th>
-                    <th>Output</th>
-                </tr>
-                <tr>
-                    <td><strong>Finance</strong></td>
-                    <td>Budget tracking, equity management, revenue reporting</td>
-                    <td>Monthly P&L, equity distribution calculations</td>
-                </tr>
-                <tr>
-                    <td><strong>Ponytail</strong></td>
-                    <td>Meeting scheduling, action tracking, production workflows</td>
-                    <td>Auto-scheduled sessions, tracked action items</td>
-                </tr>
-                <tr>
-                    <td><strong>GStack</strong></td>
-                    <td>Manufacturing CAD versioning, software updates, QA</td>
-                    <td>Version control, deployment tracking</td>
-                </tr>
-                <tr>
-                    <td><strong>gBrain</strong></td>
-                    <td>Founder insight synthesis, pattern recognition</td>
-                    <td>Weekly insights, trend reports, recommendations</td>
-                </tr>
-                <tr>
-                    <td><strong>Headroom</strong></td>
-                    <td>Founder session tracking, conversation history</td>
-                    <td>Session notes, progress tracking, mentor matches</td>
-                </tr>
-                <tr>
-                    <td><strong>Agents</strong></td>
-                    <td>Content generation, technical support, optimization</td>
-                    <td>Automated workflows, real-time recommendations</td>
-                </tr>
-            </table>
-
-            <h3>Real-Time Dashboards</h3>
-            <ul class="feature-list">
-                <li>Community health (founders, funding, dropouts)</li>
-                <li>Manufacturing metrics (production, quality, cost)</li>
-                <li>Partnership pipeline and revenue tracking</li>
-                <li>Government relationship status</li>
-                <li>Financial health (MRR, margins, cash runway)</li>
-            </ul>
-        </section>
-
-        <!-- NEXT STEPS -->
-        <section class="section" id="contact">
-            <h2>Next Steps & Decision</h2>
-
-            <h3>Decision Process</h3>
-            <ol style="margin-left: 20px; margin-top: 20px;">
-                <li style="margin: 15px 0;"><strong>This Week (July 22-28):</strong> Review this strategy with your team. Questions welcome.</li>
-                <li style="margin: 15px 0;"><strong>July 27:</strong> Contract negotiation begins. Finance & legal terms discussed.</li>
-                <li style="margin: 15px 0;"><strong>July 31:</strong> Partnership agreement signed. You're officially committed.</li>
-                <li style="margin: 15px 0;"><strong>August 1:</strong> Go live. Operations launch. Teams begin work.</li>
-            </ol>
-
-            <h3>Contact Information</h3>
-            <div class="grid">
-                <div class="card">
-                    <h4>Strategy & Vision</h4>
-                    <p><strong>Chris Peralta</strong><br>
-                    Silicon Valley HQ Co-Founder<br>
-                    Global Expansion Lead</p>
-                </div>
-                <div class="card">
-                    <h4>Operations & Implementation</h4>
-                    <p><strong>Natalia</strong><br>
-                    Africa Regional Director<br>
-                    Day-to-day operations</p>
-                </div>
-                <div class="card">
-                    <h4>Contracts & Finance</h4>
-                    <p><strong>t.ramaphosa@studex.dev</strong><br>
-                    Partnership agreements<br>
-                    Financial terms</p>
-                </div>
-            </div>
-
-            <h3>Questions to Discuss</h3>
-            <ul class="feature-list">
-                <li>Manufacturing hub investment amount and equity stake preference</li>
-                <li>Startup referral strategy and commission terms</li>
-                <li>Government contract opportunities specific to your markets</li>
-                <li>Team structure and staffing for consulting delivery</li>
-                <li>Timeline flexibility based on your internal approvals</li>
-            </ul>
-
-            <h3>Your Decision</h3>
-            <div class="highlight-box">
-                <strong>This is not just a service agreement. This is equity partnership in building African tech infrastructure.</strong>
-                <p style="margin-top: 15px;">You're not buying cloud services. You're co-investing in manufacturing facilities, equity in the ecosystem, and a seat at the table as we build sovereign AI infrastructure.</p>
-                <p style="margin-top: 15px;"><strong>The question isn't "Can we afford this?"—it's "Can we afford NOT to do this?"</strong></p>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
         <footer>
-            <p><strong>AfricaBiz + Agentic Rise: Complete Strategy Document</strong></p>
+            <p><strong>AfricaBiz + Agentic Rise: Complete Strategy & Investment Document</strong></p>
             <p>July 2026 | Partnership Proposal</p>
-            <p style="margin-top: 20px; font-size: 0.9em; color: #9ca3af;">Global AI Infrastructure | Manufacturing Equity | Startup Community | Sovereign Technology</p>
-            <p style="margin-top: 20px; font-size: 0.85em; color: #6b7280;">
-                For questions or additional information, contact t.ramaphosa@studex.dev<br>
-                Partnership Document | Confidential
-            </p>
+            <p style="margin-top: 20px; font-size: 0.9em;">Global AI Infrastructure | Manufacturing Equity | Women's AI Union | Sovereign Technology</p>
+            <p style="margin-top: 20px; font-size: 0.85em;">Contact: t.ramaphosa@studex.dev | Natalia: International Operations</p>
         </footer>
     </div>
 </body>
