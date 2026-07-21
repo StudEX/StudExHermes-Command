@@ -1,11 +1,6 @@
 {
-  "buildCommand": "echo 'Static site - no build needed'",
+  "buildCommand": null,
   "outputDirectory": "public",
   "framework": "static",
-  "regions": ["sfo1"],
-  "env": {
-    "SITE_NAME": {
-      "default": "AfricaBiz Strategy"
-    }
-  }
+  "regions": ["sfo1"]
 }
