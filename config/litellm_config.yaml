@@ -1,0 +1,144 @@
+# LiteLLM Router: OpenRouter (Planning) + Hermes (Execution)
+# Routes: Complex reasoning → OpenRouter, Tool execution → Hermes
+
+model_list:
+  # --- TIER 1: OpenRouter (Planning/Orchestration) ---
+  - model_name: planner-opus
+    litellm_params:
+      model: openrouter/anthropic/claude-opus-4.7
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 120
+      
+  - model_name: planner-gpt5
+    litellm_params:
+      model: openrouter/openai/gpt-5.4
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 90
+      
+  - model_name: planner-sonnet
+    litellm_params:
+      model: openrouter/anthropic/claude-sonnet-4.6
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 60
+
+  # --- TIER 2: Hermes Models (Execution) ---
+  - model_name: hermes-4-405b
+    litellm_params:
+      model: openrouter/nous/hermes-4-405b
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 180
+      
+  - model_name: hermes-4-70b
+    litellm_params:
+      model: openrouter/nous/hermes-4-70b
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 60
+      
+  - model_name: hermes-4-14b
+    litellm_params:
+      model: openrouter/nous/hermes-4-14b
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 45
+
+  # --- TIER 3: Local Ollama (Private/Offline) ---
+  - model_name: hermes-local
+    litellm_params:
+      model: ollama/hermes3:latest
+      api_base: http://192.168.1.114:11434
+      timeout: 300
+
+  # ═══════════════════════════════════════════════════════
+  # TIER 4: KGOSI Model House — Local Mac (LM Studio + Ollama)
+  # Investment Committee brain + council for Black Cloud OS
+  # ═══════════════════════════════════════════════════════
+
+  # KGOSI ARBITER TRIPLE (Portfolio Manager consensus vote)
+  - model_name: kgosi-arbiter-qwen
+    litellm_params:
+      model: openai/qwen3.8-27b-mlx-4bit
+      api_base: http://localhost:1234/v1
+      api_key: lm-studio
+      timeout: 120
+
+  - model_name: kgosi-arbiter-glm
+    litellm_params:
+      model: openai/glm-4.7-flash-mlx-6bit
+      api_base: http://localhost:1234/v1
+      api_key: lm-studio
+      timeout: 90
+
+  - model_name: kgosi-arbiter-ornith
+    litellm_params:
+      model: openai/ornith-1.5-9b-mlx
+      api_base: http://localhost:1234/v1
+      api_key: lm-studio
+      timeout: 90
+
+  # KGOSI COUNCIL OF SIX
+  - model_name: kgosi-buffett-moat
+    litellm_params:
+      model: ollama/qwen2.5:14b
+      api_base: http://localhost:11434
+      timeout: 120
+
+  - model_name: kgosi-munger-regulatory
+    litellm_params:
+      model: openai/ministral-3-14b-reasoning
+      api_base: http://localhost:1234/v1
+      api_key: lm-studio
+      timeout: 120
+
+  - model_name: kgosi-cathie-growth
+    litellm_params:
+      model: openai/muse-glimmer-30b
+      api_base: http://localhost:1234/v1
+      api_key: lm-studio
+      timeout: 180
+
+  - model_name: kgosi-naledi-brand
+    litellm_params:
+      model: openrouter/nous/hermes-4-70b
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 60
+
+  - model_name: kgosi-cashclaw-econ
+    litellm_params:
+      model: ollama/qwen2.5-coder:7b
+      api_base: http://localhost:11434
+      timeout: 90
+
+  - model_name: kgosi-kigali-sovereign
+    litellm_params:
+      model: openai/ornith-1.0-35b-gguf
+      api_base: http://localhost:1234/v1
+      api_key: lm-studio
+      timeout: 240
+
+  # KGOSI RAG embeddings (for ChromaDB over the Data Ceters/ drive)
+  - model_name: kgosi-embed
+    litellm_params:
+      model: ollama/nomic-embed-text
+      api_base: http://localhost:11434
+
+# General settings — allow DB-less operation (no spend logs, no key DB)
+general_settings:
+  disable_spend_logs: true
+  disable_error_logs: true
+
+# Router Settings
+router_settings:
+  # Fallback order: Hermes 70B → Hermes 405B (if 70B fails)
+  fallback_strategy: "least-busy"
+  timeout: 60
+  retries: 2
+
+# Callbacks for logging
+callbacks: []
+
+# Rate limits (prevents OpenRouter throttling)
+rate_limit:
+  planner-opus: "5/minute"
+  planner-gpt5: "10/minute"
+  planner-sonnet: "20/minute"
+  hermes-4-405b: "3/minute"
+  hermes-4-70b: "10/minute"

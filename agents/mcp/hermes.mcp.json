@@ -1,0 +1,103 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/config.json",
+  "description": "StudEx Hermes Command Centre — MCP server bundle for the operating system. Load into Claude Code (~/.claude.json → mcpServers) or Claude Desktop config.",
+  "mcpServers": {
+    "obsidian-vault": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/tumeloramaphosa/Documents/Obsidian Vault"],
+      "description": "Second-brain read/write. Data Ceters, Agents/Sessions, Claudio-CTO, Rwanda, Studex Coffee all live here."
+    },
+    "hermes-repo": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/tumeloramaphosa/black-cloud-os/StudExHermes-Command"],
+      "description": "This repo — Next.js command centre + agents/kgosi + agents/black-cloud-os."
+    },
+    "github-studex": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "description": "TumeloRamaphosa + StudEX org repos. Write ops timeout — use git CLI fallback."
+    },
+    "google-drive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "/Users/tumeloramaphosa/.openclaw/workspace/keys/agent-dataroom.json"
+      },
+      "description": "Read/search/upload Drive. Service account: agent-dataroom@agentic-lab-3324f."
+    },
+    "kgosi-bridge": {
+      "command": "bash",
+      "args": ["/Users/tumeloramaphosa/black-cloud-os/StudExHermes-Command/agents/black-cloud-os/start-black-cloud.sh"],
+      "env": {
+        "KGOSI_PORT": "5055"
+      },
+      "description": "Cactus Needle + 10 KGOSI tools (score_deal, deal_analyst, morning_brief, list_inboxes, send_email, ping_kgosi, hypothesize, capital_position, list_deals, get_verdict). Listens :5055 on Mac Mini."
+    },
+    "litellm-router": {
+      "url": "http://localhost:4000/v1",
+      "description": "OpenAI-compatible gateway for hermes/openclaw/kimi/codex/dench/opencode/cursor/claude + KGOSI tier-4 aliases (kgosi-arbiter-qwen/glm/ornith, kgosi-buffett-moat, kgosi-munger-regulatory, kgosi-cathie-growth, kgosi-naledi-brand, kgosi-cashclaw-econ, kgosi-kigali-sovereign)."
+    },
+    "orgo": {
+      "command": "orgo",
+      "args": ["mcp", "serve"],
+      "env": {
+        "ORGO_API_KEY": "${ORGO_API_KEY}"
+      },
+      "description": "10 cloud desktops (9 running). Signed in as tumelor001@gmail.com."
+    },
+    "agentmail": {
+      "command": "npx",
+      "args": ["-y", "@agentmail/mcp-server"],
+      "env": {
+        "AGENTMAIL_API_KEY": "${AGENTMAIL_KEY}"
+      },
+      "description": "6 Studex inboxes + kgosi@studex.dev (scoped via AGENTMAIL_KGOSI_KEY)."
+    }
+  },
+  "agents": {
+    "hermes": {
+      "model": "kimi-k2.6:cloud",
+      "role": "Creative/Content orchestrator",
+      "route": "litellm-router",
+      "system": "You are Hermes, creative arm of the StudEx swarm. Voice: obsidian-gold luxury, editorial cadence, apex energy.",
+      "tools": ["obsidian-vault", "google-drive", "agentmail", "kgosi-bridge"]
+    },
+    "openclaw": {
+      "model": "glm-5.1:cloud",
+      "role": "Logic/Technical execution",
+      "route": "litellm-router",
+      "system": "You are OpenClaw, technical arm of the swarm. Precise, deep, systems-level. Bridge to studex.dev Drive persona.",
+      "tools": ["obsidian-vault", "hermes-repo", "github-studex", "orgo"]
+    },
+    "codex": {
+      "model": "minimax-01:cloud",
+      "role": "Execution/Optimization",
+      "route": "litellm-router",
+      "system": "You are Codex, execution arm. Ship, optimize, ship again.",
+      "tools": ["hermes-repo", "github-studex", "orgo"]
+    },
+    "kgosi": {
+      "model": "kgosi-arbiter-qwen",
+      "role": "Investment Committee Chair (Black Cloud)",
+      "route": "kgosi-bridge",
+      "system": "You are KGOSI, Chief of the Black Cloud Investment Committee. Route to the 6-analyst council (Buffett-Moat, Munger-Regulatory, Cathie-Growth, Naledi-Brand, Cashclaw-Econ, Kigali-Sovereign). Voice: obsidian-gold, direct, apex.",
+      "tools": ["kgosi-bridge", "obsidian-vault", "agentmail", "litellm-router"]
+    },
+    "robusca": {
+      "model": "deepseek-v4-flash",
+      "role": "Chief of Staff (existing)",
+      "route": "litellm-router",
+      "system": "You are Robusca Romanov, existing chief of staff. Coordinate across the swarm. Log every session to Obsidian Agents/Sessions/Robusca/.",
+      "tools": ["obsidian-vault", "hermes-repo"]
+    },
+    "grok-bots": {
+      "role": "External collaborators (joined by Tumi's Grok bots)",
+      "onboarding_prompt": "See /Users/tumeloramaphosa/Desktop/Founder/Data Center/BLACK_CLOUD_AGENT_BRIEF.md — paste-ready onboarding brief.",
+      "tools": ["litellm-router", "kgosi-bridge"]
+    }
+  },
+  "buzz_relay_status": "Do not touch Buzz agents in this pass — CLI-configure only."
+}
