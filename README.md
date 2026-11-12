@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StudBot / StudEx Hermes Command
 
-## Getting Started
+Local integration preview for the StudEx Factory workspace. This branch connects the visual design, draft desk, brand story and an explicitly bounded readiness adapter. It does **not** claim live Hermes, Orgo, Shopify, phone, Google Cloud or Base44 execution.
 
-First, run the development server:
+## Run locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Use Node 22 (`.nvmrc`).
+
+```sh
+npm ci
+npm test
+npm run build
+npm run start -- --hostname 127.0.0.1 --port 4320
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Bind to loopback. There is no production identity/tenant boundary yet. The legacy demo password endpoint now returns 503 and grants no cookie. Older routes are labelled archived samples.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Implemented
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Responsive founder workspace: Overview, Agents, Content, Connections, Memory.
+- Explicit-save local browser draft and explicit-load action. No draft is sent to an agent.
+- Optional user-triggered browser read-aloud; this is not live conversational voice. Microphone pairing remains disabled.
+- GET `/api/integrations`: honest readiness metadata, no credentials/URLs returned.
+- Optional Linux process health read via server-only `STUDBOT_LINUX_HEALTH_URL`. Only numeric loopback HTTP `/api/health`, no parameters, no redirect; 1.5-second/8KB limit. A response does not prove healthy agents/VMs.
+- Node tests for failure modes, hostile targets and bounded reads.
 
-## Learn More
+## Integration records
 
-To learn more about Next.js, take a look at the following resources:
+- [Brand narrative](docs/brand/SOUL.md)
+- [Architecture and migration](docs/integration/ARCHITECTURE.md)
+- [On-demand compute and cost policy](docs/integration/COMPUTE-POLICY.md)
+- [Validation](docs/integration/VALIDATION.md)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Provider flags `STUDBOT_<ID>_CONFIGURED=true` only declare configuration, never verified access. Supported IDs: HERMES, PORTABLE, SHOPIFY, BASE44, ORGO, QODER, FACTORY, TWILIO, DRIVE. No flags or credentials are set by this branch. Real connectors require scoped authentication and evidence before activation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No auto-push, VM start/stop, phone pairing, network join, customer message or deployment runs at startup. Preserve the canonical Notion Projects queue; do not infer authority from an agent-generated plan.

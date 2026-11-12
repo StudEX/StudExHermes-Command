@@ -9,7 +9,7 @@ export default function MemoryPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#1a0033] text-[#ffff00] p-8 font-mono border-4 border-[#ffff00]">
+    <><aside style={{background:"#fff4d6",color:"#332a17",padding:"16px",fontFamily:"system-ui",fontSize:"14px"}}>Archived sample view — figures and connection claims below are unverified. <a href="/" style={{textDecoration:"underline"}}>Open the current local workspace</a>.</aside><main className="min-h-screen bg-[#1a0033] text-[#ffff00] p-8 font-mono border-4 border-[#ffff00]">
       <header className="mb-12 border-b-2 border-[#ff00ff] pb-4">
         <h1 className="text-4xl font-bold italic tracking-tighter">🧠 MEMORY LOG</h1>
       </header>
@@ -40,6 +40,6 @@ export default function MemoryPage() {
         <a href="/memory" className="text-[#ff00ff] underline">[ MEMORY LOG ]</a>
         <a href="/horizon" className="hover:text-[#ff00ff]">[ HORIZON PLAN ]</a>
       </nav>
-    </main>
+    </main></>
   );
 }

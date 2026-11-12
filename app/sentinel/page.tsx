@@ -8,7 +8,7 @@ export default function SentinelPortal() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#fcfaf8] text-[#1a1a1a] p-8 font-mono">
+    <><aside style={{background:"#fff4d6",color:"#332a17",padding:"16px",fontFamily:"system-ui",fontSize:"14px"}}>Archived sample view — figures and connection claims below are unverified. <a href="/" style={{textDecoration:"underline"}}>Open the current local workspace</a>.</aside><main className="min-h-screen bg-[#fcfaf8] text-[#1a1a1a] p-8 font-mono">
       <header className="mb-12 border-b-2 border-[#ff6b00] pb-6 flex justify-between items-end">
         <div>
           <h1 className="text-4xl font-black italic tracking-tighter uppercase text-[#1a1a1a]">
@@ -81,6 +81,6 @@ export default function SentinelPortal() {
         <a href="/sentinel" className="text-[#ff6b00] text-xs font-bold underline">[ SENTINEL ]</a>
         <a href="/horizon" className="hover:text-[#ff6b00] text-xs font-bold">[ HORIZON ]</a>
       </nav>
-    </main>
+    </main></>
   );
 }

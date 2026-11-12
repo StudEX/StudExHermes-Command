@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ShopifyCommand() {
   return (
-    <main className="min-h-screen bg-[#fcfaf8] text-[#1a1a1a] p-8 font-mono">
+    <><aside style={{background:"#fff4d6",color:"#332a17",padding:"16px",fontFamily:"system-ui",fontSize:"14px"}}>Archived sample view — figures and connection claims below are unverified. <a href="/" style={{textDecoration:"underline"}}>Open the current local workspace</a>.</aside><main className="min-h-screen bg-[#fcfaf8] text-[#1a1a1a] p-8 font-mono">
       <header className="mb-12 border-b-2 border-[#556b2f] pb-6 flex justify-between items-center">
         <div className="flex items-center gap-6">
           <div className="w-16 h-16 bg-[#1a1a1a] flex items-center justify-center border-2 border-[#ff6b00]">
@@ -105,6 +105,6 @@ export default function ShopifyCommand() {
         <a href="/shopify" className="text-[#556b2f] text-xs font-bold underline">[ SHOPIFY ]</a>
         <a href="/horizon" className="hover:text-[#ff6b00] text-xs font-bold">[ HORIZON ]</a>
       </nav>
-    </main>
+    </main></>
   );
 }
